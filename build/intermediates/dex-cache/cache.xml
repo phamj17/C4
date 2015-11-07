@@ -2,25 +2,25 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\phamj17\Downloads\TTTProj\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
-        <dex dex="C:\Users\phamj17\Downloads\TTTProj\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-8c60a86401a22799563cf84d325cda38770436ca.jar" />
-    </item>
-    <item
         jar="C:\Program Files\AndroidSDK\extras\android\m2repository\com\android\support\support-annotations\21.0.0\support-annotations-21.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
-        <dex dex="C:\Users\phamj17\Downloads\TTTProj\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-cd0bc13b74136e31c952ef8da9278e72a7f13ec8.jar" />
+        <dex dex="P:\CS301\TTTProj\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-cd0bc13b74136e31c952ef8da9278e72a7f13ec8.jar" />
     </item>
     <item
-        jar="C:\Users\phamj17\Downloads\TTTProj\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
+        jar="P:\CS301\TTTProj\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="686344a780033e4ba22b926cd225f8d4941247e6">
-        <dex dex="C:\Users\phamj17\Downloads\TTTProj\app\build\intermediates\pre-dexed\debug\classes-92d564888fa136dfbaf35395ed16e3a4fcf69ac5.jar" />
+        <dex dex="P:\CS301\TTTProj\app\build\intermediates\pre-dexed\debug\classes-aecb752bf6bef0a931947ab740541a9f2419d8ba.jar" />
+    </item>
+    <item
+        jar="P:\CS301\TTTProj\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
+        <dex dex="P:\CS301\TTTProj\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-975b80991b4b8c74b505cb79d0fd7c87cafeea81.jar" />
     </item>
 
 </items>
