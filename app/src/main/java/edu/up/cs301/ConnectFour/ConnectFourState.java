@@ -7,7 +7,7 @@ import edu.up.cs301.game.infoMsg.GameState;
  * Created by phamj17 on 11/5/2015.
  */
 public class ConnectFourState extends GameState {
-
+//what's up
     private final int EMPTY = 0;
     //player 1 piece
     private final int RED = 1;
