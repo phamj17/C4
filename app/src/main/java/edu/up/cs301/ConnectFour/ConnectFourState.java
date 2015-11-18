@@ -98,7 +98,7 @@ public class ConnectFourState extends GameState {
     }
 
     //check for a vertical win...
-    public boolean verticalWin() {
+    public boolean horizontalWin() {
 
         int count = 0;
         int piece = EMPTY;
@@ -109,7 +109,7 @@ public class ConnectFourState extends GameState {
         }
 
         //look through the entire board
-        for (int i = 0; i < board.length; i++) {
+        for (int i = board.length - 1; i >= 0; i--) {
             for (int j = 0; j < board[i].length; j++) {
                 //if we find a piece, up the count
                 if (board[i][j] == piece) {
@@ -128,50 +128,69 @@ public class ConnectFourState extends GameState {
     }
 
     //check for a horizontal win...
-    public boolean horizontalWin() {
+    public boolean verticalWin() {
 
         int count = 0;
         int piece = EMPTY;
         if (turn == 0) {
             piece = RED;
-        } else if (turn == 1) {
+        }
+        else if (turn == 1) {
             piece = BLACK;
         }
-        int tempRow = 0;
+        //int tempRow = 0;
 
-        //look through the entire board
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                //if we are in the first column
-                if (i == 0) {
-                    //if we find a piece, get the row
-                    //up the count
-                    //set j to the max so we start to look at the next column
-                    if (board[i][j] == piece) {
-                        tempRow = j;
-                        count++;
-                        j = board[i].length;
-                    }
+        for (int j = 0; j < board[0].length; j++) {
+            for (int i = board.length - 1; i >= 0; i--) {
+                if (board[i][j] == piece) {
+                    count++;
+                    if (count >= 4) return true;
                 }
-                //if we aren't in the first column
-                else if (i > 0) {
-                    //if there's a piece in the tempRow
-                    //up the count
-                    if (board[i][tempRow] == piece) {
-                        count++;
-                        j = board[i].length;
-                        //we found four in a row, you won!
-                        if (count >= 4) return true;
-                    }
-                    //else reset the count to 0
-                    else {
-                        count = 0;
-                    }
+                else {
+                    count = 0;
                 }
-
             }
-
         }
+
+//        //look through the entire board
+//        for (int i = board.length - 1; i >= 0; i--) {
+//            for (int j = 0; j < board[i].length; j++) {
+//
+//                if (board[i][j] == piece) {
+//                    count++;
+//                    //tempRow =
+//                }
+//
+//                //if we are in the first column
+//                if (i == 0) {
+//                    //if we find a piece, get the row
+//                    //up the count
+//                    //set j to the max so we start to look at the next column
+//                    if (board[i][j] == piece) {
+//                        tempRow = j;
+//                        count++;
+//                        j = board[i].length;
+//                    }
+//                }
+//                //if we aren't in the first column
+//                else if (i > 0) {
+//                    //if there's a piece in the tempRow
+//                    //up the count
+//                    if (board[i][tempRow] == piece) {
+//                        count++;
+//                        j = board[i].length;
+//                        //we found four in a row, you won!
+//                        if (count >= 4) return true;
+//                    }
+//                    //else reset the count to 0
+//                    else {
+//                        count = 0;
+//                    }
+//                }
+//
+//            }
+//
+//        }
         return false;
     }
 
