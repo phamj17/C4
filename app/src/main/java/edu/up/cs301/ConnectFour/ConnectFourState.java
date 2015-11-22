@@ -78,13 +78,13 @@ public class ConnectFourState extends GameState {
             //if it's player 1's turn, set the piece to red
             //change the turn
             if (turn == 0) {
-                tempBoard[col][tempRow] = RED;
+                tempBoard[tempBoard.length - 1 - tempRow][col] = RED;
                 //turn = 1;
             }
             //else if it's player 2's turn, set the piece to black
             //change the turn
             else if (turn == 1) {
-                tempBoard[col][tempRow] = BLACK;
+                tempBoard[tempBoard.length - 1 - tempRow][col] = BLACK;
                 //turn = 0;
             }
 
@@ -107,22 +107,46 @@ public class ConnectFourState extends GameState {
         } else if (turn == 1) {
             piece = BLACK;
         }
+        int tempRow;
 
-        //look through the entire board
-        for (int i = board.length - 1; i >= 0; i--) {
-            for (int j = 0; j < board[i].length; j++) {
-                //if we find a piece, up the count
-                if (board[i][j] == piece) {
-                    count++;
-                    //we found four in a row, you won!
-                    if (count >= 4) return true;
+        for (int i = board.length - 1; i >= 0; i--){
+            for(int j = 0; j < board[i].length; j++){
+                //i = board.length-1, j = 1
+                if(board[i][j] == piece) {
+                    if (j <= 3) {
+                        tempRow = i;
+                        for (int a = 0; a < 4; a++) {
+                            if (board[tempRow][j + a] == piece) {
+                                count++;
+                                if (count >= 4) return true;
+                            }
+                            else {
+                                count = 0;
+                            }
+                        }
+                    }
                 }
-                //else reset the count to zero
                 else {
                     count = 0;
                 }
             }
         }
+
+        //look through the entire board
+//        for (int i = board.length - 1; i >= 0; i--) {
+//            for (int j = 0; j < board[i].length; j++) {
+//                //if we find a piece, up the count
+//                if (board[i][j] == piece) {
+//                    count++;
+//                    //we found four in a row, you won!
+//                    if (count >= 4) return true;
+//                }
+//                //else reset the count to zero
+//                else {
+//                    count = 0;
+//                }
+//            }
+//        }
 
         return false;
     }
@@ -138,19 +162,41 @@ public class ConnectFourState extends GameState {
         else if (turn == 1) {
             piece = BLACK;
         }
-        //int tempRow = 0;
+        int tempCol = 0;
 
-        for (int j = 0; j < board[0].length; j++) {
-            for (int i = board.length - 1; i >= 0; i--) {
-                if (board[i][j] == piece) {
-                    count++;
-                    if (count >= 4) return true;
+        for (int i = board.length - 1; i >= 0; i--){
+            for(int j = 0; j < board[i].length; j++){
+                if(board[i][j] == piece) {
+                    if (i >= 3) {
+                        tempCol = j;
+                        for (int a = 0; a < 4; a++) {
+                            if (board[i - a][tempCol] == piece) {
+                                count++;
+                                if (count >= 4) return true;
+                            }
+                            else {
+                                count = 0;
+                            }
+                        }
+                    }
                 }
                 else {
                     count = 0;
                 }
             }
         }
+
+//        for (int j = 0; j < board[0].length; j++) {
+//            for (int i = board.length - 1; i >= 0; i--) {
+//                if (board[i][j] == piece) {
+//                    count++;
+//                    if (count >= 4) return true;
+//                }
+//                else {
+//                    count = 0;
+//                }
+//            }
+//        }
 
 //        //look through the entire board
 //        for (int i = board.length - 1; i >= 0; i--) {
@@ -196,6 +242,7 @@ public class ConnectFourState extends GameState {
 
     //check for diagonal win
     public boolean diagonalWin() {
+        boolean keepGoing = false;
         int count = 0;
         int piece = EMPTY;
         if (turn == 0) {
@@ -206,58 +253,54 @@ public class ConnectFourState extends GameState {
         int tempRow = 0;
         int tempCol = 0;
 
-        //look through the board
-        //checks for bottom-left to top-right diagonal
+
+        //look through entire game board, starting in top left corner
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j] == piece) {
-                    //get temp col and row
-                    tempCol = i;
-                    tempRow = j;
-                    //loop that checks for, at most, four pieces in a row
-                    for (int a = 0; a < 4; a++) {
-                        if (tempCol + 1 < board.length && tempRow + 1 < board[i].length) {
-                            //if it's the right piece, do this stuff
-                            if (board[tempCol][tempRow] == piece) {
+                    count = 1;
+                    int k = i;
+                    int l = j;
+                    keepGoing = true;
+                    if (i < 3 && j < 4) {
+                        while (keepGoing) {
+                            k++;
+                            l++;
+                            if (board[k][l] == piece) {
                                 count++;
-                                tempCol++;
-                                tempRow++;
-                                //we found four in a row, you won!
-                                if (count >= 4) {
-                                    return true;
-                                }
-                            }
-                            //reset count to zero
-                            else {
+                            } else {
+                                keepGoing = false;
                                 count = 0;
+                            }
+                            if (count == 4) {
+                                return true;
                             }
                         }
                     }
                 }
             }
         }
-
-        //similar to the double for loop above
-        //checks for top-left to bottom-right diagonal
-        for (int i = board.length - 1; i >= 0; i--) {
+        for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j] == piece) {
-                    tempCol = i;
-                    tempRow = j;
-                    for (int a = 0; a < 4; a++) {
-                        if (tempCol - 1 >= 0 && tempRow + 1 < board[i].length) {
-                            if (board[tempCol][tempRow] == piece) {
+                    count = 1;
+                    int k = i;
+                    int l = j;
+                    keepGoing = true;
+                    if (j > 2 && i < 3) {
+                        while (keepGoing) {
+                            k++;
+                            l--;
+                            if (board[k][l] == piece) {
                                 count++;
-                                tempCol--;
-                                tempRow++;
-                                if (count >= 4) {
+                                if (count == 4) {
                                     return true;
                                 }
-
-                            }
-                            else {
+                            } else {
+                                keepGoing = false;
                                 count = 0;
                             }
+
                         }
                     }
                 }
@@ -269,15 +312,15 @@ public class ConnectFourState extends GameState {
 
     //checks if the game is over...
     public boolean gameOver() {
-
         if (verticalWin() || horizontalWin() || diagonalWin()) {
             return true;
-        } else {
+        }
+        else {
             if (turn == 0)
             {
                 turn = 1;
             }
-            else {
+            else if (turn == 1){
                 turn = 0;
             }
             return false;

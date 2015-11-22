@@ -21,4 +21,4 @@
         android:onClick="doFinish"
         android:text="Back" />
 
-</RelativeLayout><!-- From: file:/C:/Users/macnary17/Documents/TTTProj/app/src/main/res/layout/ttt_human_player1and2.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/phamj17/Desktop/TTTProj/app/src/main/res/layout/ttt_human_player1and2.xml -->

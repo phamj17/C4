@@ -149,11 +149,11 @@ public class ConnectFourStateTest {
         testState.gameOver();
         testState3.setPiece(1); //r
         testState.gameOver();
-        testState3.setPiece(0); //b
+        testState3.setPiece(5); //b
         testState.gameOver();
         testState3.setPiece(1); //r
         testState.gameOver();
-        boolean test21 = testState.diagonalWin();
+        boolean test21 = testState3.diagonalWin();
         assertEquals(test21, true);
 
 
@@ -190,27 +190,27 @@ public class ConnectFourStateTest {
     public void testVerticalWin() throws Exception {
         ConnectFourState testState = new ConnectFourState();
 
-        //set pieces in a vertical arrangement
-        testState.setPiece(3); //r
+        testState.setPiece(0); //r
+        testState.gameOver();
+        testState.setPiece(0); //b
+        testState.gameOver();
+        testState.setPiece(0); //r, 1
+        testState.gameOver();
+        testState.setPiece(1); //b
+        testState.gameOver();
+        testState.setPiece(0); //r, 2
         testState.gameOver();
         testState.setPiece(2); //b
         testState.gameOver();
-        testState.setPiece(3); //r
+        testState.setPiece(0); //r, 3
         testState.gameOver();
         testState.setPiece(2); //b
         testState.gameOver();
-        testState.setPiece(3); //r
-        testState.gameOver();
-        testState.setPiece(2); //b
-        testState.gameOver();
-        testState.setPiece(3); //r
-        testState.gameOver();
-        testState.setPiece(4); //b
+        testState.setPiece(0); //r, 4
         testState.gameOver();
 
         boolean test = testState.verticalWin();
         assertEquals(test, true);
-
     }
 
     @Test
