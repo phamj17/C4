@@ -1,5 +1,7 @@
 package edu.up.cs301.ConnectFour;
 
+import android.graphics.Canvas;
+
 import edu.up.cs301.game.Game;
 import edu.up.cs301.game.infoMsg.GameState;
 
@@ -92,6 +94,8 @@ public class ConnectFourState extends GameState {
             tempCol[col]++;
             board = tempBoard;
             column = tempCol;
+
+
 
             return true;
         }
@@ -348,9 +352,18 @@ public class ConnectFourState extends GameState {
         return column;
     }
 
-    public void dropActionCol0()
+    public void dropActionCol0(Canvas g)
     {
+        //i was trying to get the piece to draw. didn't work
+        Piece piece = new Piece(50, 500, turn, 2000);
+        piece.paintPiece(g);
         setPiece(0);
+        /*my experiment for drawing piece onto board
+         * DELETE IF IT DOESN'T WORK -Tim
+         */
+
+
+
     }
 
     public void dropActionCol1()

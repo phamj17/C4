@@ -87,14 +87,14 @@
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageView0"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView11"
+                    android:id="@+id/imageView1"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
@@ -122,55 +122,6 @@
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView4"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView5"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView5"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView5"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView5"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView5"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
                     android:id="@+id/imageView5"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
@@ -192,35 +143,35 @@
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView6"
+                    android:id="@+id/imageView7"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView6"
+                    android:id="@+id/imageView8"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView6"
+                    android:id="@+id/imageView9"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView6"
+                    android:id="@+id/imageView10"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView6"
+                    android:id="@+id/imageView11"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
             </LinearLayout>
@@ -234,91 +185,42 @@
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView7"
+                    android:id="@+id/imageView12"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView7"
+                    android:id="@+id/imageView13"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView7"
+                    android:id="@+id/imageView14"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView7"
+                    android:id="@+id/imageView15"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView7"
+                    android:id="@+id/imageView16"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView7"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView8"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView8"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView8"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView8"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView8"
-                    android:layout_weight="1"
-                    android:src="@mipmap/clear" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imageView8"
+                    android:id="@+id/imageView17"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
             </LinearLayout>
@@ -332,42 +234,42 @@
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView9"
+                    android:id="@+id/imageView18"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView9"
+                    android:id="@+id/imageView19"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView9"
+                    android:id="@+id/imageView20"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView9"
+                    android:id="@+id/imageView21"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView9"
+                    android:id="@+id/imageView22"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView9"
+                    android:id="@+id/imageView23"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
             </LinearLayout>
@@ -381,42 +283,140 @@
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView10"
+                    android:id="@+id/imageView24"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView10"
+                    android:id="@+id/imageView25"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView10"
+                    android:id="@+id/imageView26"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView10"
+                    android:id="@+id/imageView27"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView10"
+                    android:id="@+id/imageView28"
                     android:layout_weight="1"
                     android:src="@mipmap/clear" />
 
                 <ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageView10"
+                    android:id="@+id/imageView29"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView30"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView31"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView32"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView33"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView34"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView35"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView36"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView37"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView38"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView39"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView40"
+                    android:layout_weight="1"
+                    android:src="@mipmap/clear" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView41"
                     android:layout_weight="1"
                     android:src="@mipmap/clear"
                     android:soundEffectsEnabled="false" />

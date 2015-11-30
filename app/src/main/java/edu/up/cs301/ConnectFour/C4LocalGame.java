@@ -9,6 +9,7 @@ import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
+import android.graphics.Canvas;
 import android.util.Log;
 
 /**
@@ -50,7 +51,8 @@ public class C4LocalGame extends LocalGame {
             return false;
         }
         if (action instanceof C4DropActionCol0) {
-            state.dropActionCol0();
+            Canvas g = new Canvas();
+            state.dropActionCol0(g);
             return true;
         }
         if (action instanceof C4DropActionCol1) {
