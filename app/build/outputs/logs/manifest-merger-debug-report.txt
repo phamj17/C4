@@ -41,7 +41,7 @@ MERGED from com.android.support:support-v4:21.0.0:16:5
 		ADDED from AndroidManifest.xml:14:9
 	android:theme
 		ADDED from AndroidManifest.xml:16:9
-activity#edu.up.cs301.tictactoe.TTTMainActivity
+activity#edu.up.cs301.ConnectFour.C4MainActivity
 ADDED from AndroidManifest.xml:18:9
 	android:configChanges
 		ADDED from AndroidManifest.xml:19:13

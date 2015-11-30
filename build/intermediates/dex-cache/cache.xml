@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\phamj17\Desktop\TTTProj\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
+        jar="C:\Users\macnary17\Desktop\TTTProj\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
-        <dex dex="C:\Users\phamj17\Desktop\TTTProj\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-7b0bfcef51f973e4a6fd07664086cc043969c4d6.jar" />
+        <dex dex="C:\Users\macnary17\Desktop\TTTProj\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-77d61d4ffc0955a133cbf45de081ce860989f52d.jar" />
     </item>
     <item
         jar="C:\Program Files\AndroidSDK\extras\android\m2repository\com\android\support\support-annotations\21.0.0\support-annotations-21.0.0.jar"
@@ -16,11 +16,11 @@
         <dex dex="P:\CS301\TTTProj\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-cd0bc13b74136e31c952ef8da9278e72a7f13ec8.jar" />
     </item>
     <item
-        jar="C:\Users\phamj17\Desktop\TTTProj\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
+        jar="C:\Users\macnary17\Desktop\TTTProj\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="686344a780033e4ba22b926cd225f8d4941247e6">
-        <dex dex="C:\Users\phamj17\Desktop\TTTProj\app\build\intermediates\pre-dexed\debug\classes-4381be7267fafe97570724e6843a29278a0f65ff.jar" />
+        <dex dex="C:\Users\macnary17\Desktop\TTTProj\app\build\intermediates\pre-dexed\debug\classes-bb257b093bbda7fe5633b3c70ddb85a9e1338884.jar" />
     </item>
 
 </items>

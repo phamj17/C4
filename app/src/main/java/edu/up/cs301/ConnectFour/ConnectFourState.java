@@ -347,4 +347,39 @@ public class ConnectFourState extends GameState {
     public int[] getColumn() {
         return column;
     }
+
+    public void dropActionCol0()
+    {
+        setPiece(0);
+    }
+
+    public void dropActionCol1()
+    {
+        setPiece(1);
+    }
+
+    public void dropActionCol2()
+    {
+        setPiece(2);
+    }
+
+    public void dropActionCol3()
+    {
+        setPiece(3);
+    }
+
+    public void dropActionCol4()
+    {
+        setPiece(4);
+    }
+
+    public void dropActionCol5()
+    {
+        setPiece(5);
+    }
+
+    public void dropActionCol6()
+    {
+        setPiece(6);
+    }
 }
