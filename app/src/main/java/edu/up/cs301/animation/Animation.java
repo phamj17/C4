@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
 
+import edu.up.cs301.ConnectFour.ConnectFourState;
+import edu.up.cs301.ConnectFour.Piece;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.config.GameConfig;
@@ -31,7 +33,9 @@ public class Animation extends GameMainActivity implements Animator {
     }
 
     public void tick(Canvas canvas) {
-
+        Canvas g = new Canvas();
+        Piece myPiece = new Piece(0,0,1);
+        myPiece.paintPiece(g);
 
     }
 

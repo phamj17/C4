@@ -41,7 +41,7 @@ public class ConnectFourStateTest {
 
         //check if the pieces go out of bounds
         boolean test = testState.setPiece(0);
-        int testThis = testState.getPiece(0, 2);
+        int testThis = testState.getPiece(3, 0);
         assertEquals(test, false);
         assertEquals(testThis, 1);
     }

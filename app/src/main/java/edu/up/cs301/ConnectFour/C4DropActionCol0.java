@@ -4,7 +4,7 @@ import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.actionMsg.GameAction;
 
 /**
- * Created by macnary17 on 11/30/2015.
+ * Created by macnary17 on 11/20/2015.
  */
 public class C4DropActionCol0 extends GameAction{
 

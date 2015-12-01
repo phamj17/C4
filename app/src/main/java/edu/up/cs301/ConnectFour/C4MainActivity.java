@@ -6,6 +6,7 @@ package edu.up.cs301.ConnectFour;
 
 import java.util.ArrayList;
 
+import edu.up.cs301.animation.Animation;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
@@ -18,6 +19,7 @@ public class C4MainActivity extends GameMainActivity {
     // the port number that this game will use when playing over the network
     private static final int PORT_NUMBER = 2278;
 
+    private Animation animation;
     /**
      * Create the default configuration for this game:
      * - one human player vs. one computer player

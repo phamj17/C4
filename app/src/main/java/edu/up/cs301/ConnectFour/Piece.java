@@ -16,13 +16,13 @@ public class Piece {
     public int maxY; //used to tell where the piece should end up
     //public int color;
 
-    public Piece(int xPos, int yPos, int initTurn, int initMax){
+    public Piece(int xPos, int yPos, int initTurn){
         this.xPosition = xPos;
         this.yPosition = yPos;
         //this.velY = initVelY;
         //this.twist1 = initTwist;
         this.turn = initTurn;
-        this.maxY = initMax;
+        //this.maxY = initMax;
 
     }
 
@@ -66,7 +66,7 @@ public class Piece {
      * given width and height.
      *
      */
-    /*public void move(int width, int height, int initVelY, int count){
+     public void move(int width, int height, int initVelY, int count){
 
         //calculate the xPosition and yPosition and y velocity
         xPosition = (width + (2*twist1)) + (count * 35);
@@ -86,6 +86,6 @@ public class Piece {
         }
 
 
-    }*/
+    }
 
 }

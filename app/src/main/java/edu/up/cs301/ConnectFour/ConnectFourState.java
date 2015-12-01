@@ -355,7 +355,7 @@ public class ConnectFourState extends GameState {
     public void dropActionCol0(Canvas g)
     {
         //i was trying to get the piece to draw. didn't work
-        Piece piece = new Piece(50, 500, turn, 2000);
+        Piece piece = new Piece(0, 0, turn);
         piece.paintPiece(g);
         setPiece(0);
         /*my experiment for drawing piece onto board
