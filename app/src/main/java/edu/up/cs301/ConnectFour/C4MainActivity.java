@@ -39,9 +39,17 @@ public class C4MainActivity extends GameMainActivity {
             public GamePlayer createPlayer(String name) {
                 return new C4HumanPlayer(name);
             }});
-        playerTypes.add(new GamePlayerType("Computer Player") {
+        playerTypes.add(new GamePlayerType("Computer Player (easy)") {
             public GamePlayer createPlayer(String name) {
                 return new C4ComputerPlayerEasy(name);
+            }});
+        playerTypes.add(new GamePlayerType("Computer Player (medium)") {
+            public GamePlayer createPlayer(String name) {
+                return new C4ComputerPlayerMedium(name);
+            }});
+        playerTypes.add(new GamePlayerType("Computer Player (hard)") {
+            public GamePlayer createPlayer(String name) {
+                return new C4ComputerPlayerHard(name);
             }});
 
         // Create a game configuration class for Counter:

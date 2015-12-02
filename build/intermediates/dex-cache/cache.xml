@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\macnary17\Desktop\TTTProj\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
-        <dex dex="C:\Users\macnary17\Desktop\TTTProj\app\build\intermediates\pre-dexed\debug\classes-bb257b093bbda7fe5633b3c70ddb85a9e1338884.jar" />
-    </item>
-    <item
         jar="C:\Users\macnary17\Desktop\TTTProj\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -21,6 +14,13 @@
         revision="22.0.1"
         sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
         <dex dex="P:\CS301\TTTProj\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-cd0bc13b74136e31c952ef8da9278e72a7f13ec8.jar" />
+    </item>
+    <item
+        jar="C:\Users\macnary17\Desktop\TTTProj\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="C:\Users\macnary17\Desktop\TTTProj\app\build\intermediates\pre-dexed\debug\classes-bb257b093bbda7fe5633b3c70ddb85a9e1338884.jar" />
     </item>
 
 </items>

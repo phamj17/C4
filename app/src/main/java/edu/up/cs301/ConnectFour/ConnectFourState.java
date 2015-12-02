@@ -9,7 +9,9 @@ import edu.up.cs301.game.infoMsg.GameState;
  * Created by phamj17 on 11/5/2015.
  */
 public class ConnectFourState extends GameState {
-    //what's up
+    //helper
+    int count =0;
+
     private final int EMPTY = 0;
     //player 1 piece
     private final int RED = 1;
@@ -19,7 +21,7 @@ public class ConnectFourState extends GameState {
     private int winner = -1;
     //boolean that is true if game is over
     private boolean gameOver;
-    //0 for player 1, 1 for player 2/computer player
+    //0 for player one, 1 for player two/computer player
     private int turn;
 
     //number of pieces for each column
@@ -72,6 +74,7 @@ public class ConnectFourState extends GameState {
 
         //the column is already full, so return false
         if (tempCol[col] >= 6) {
+            count = 1;
             return false;
         }
         //else, do this stuff
@@ -322,10 +325,24 @@ public class ConnectFourState extends GameState {
         else {
             if (turn == 0)
             {
-                turn = 1;
+                if(count == 1)
+                {
+                    turn = 0;
+                    count = 0;
+                }
+                else {
+                    turn = 1;
+                }
             }
             else if (turn == 1){
-                turn = 0;
+                if(count == 1)
+                {
+                    turn = 1;
+                    count = 0;
+                }
+                else {
+                    turn = 0;
+                }
             }
             return false;
         }
@@ -352,18 +369,9 @@ public class ConnectFourState extends GameState {
         return column;
     }
 
-    public void dropActionCol0(Canvas g)
+    public void dropActionCol0()
     {
-        //i was trying to get the piece to draw. didn't work
-        Piece piece = new Piece(0, 0, turn);
-        piece.paintPiece(g);
         setPiece(0);
-        /*my experiment for drawing piece onto board
-         * DELETE IF IT DOESN'T WORK -Tim
-         */
-
-
-
     }
 
     public void dropActionCol1()

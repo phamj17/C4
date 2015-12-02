@@ -25,6 +25,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
+
+import edu.up.cs301.ConnectFour.C4LocalGame;
 import edu.up.cs301.game.config.GameConfig;
 import edu.up.cs301.game.config.GamePlayerType;
 import edu.up.cs301.game.util.IPCoder;
@@ -376,15 +378,13 @@ View.OnClickListener {
 			TableRow row = addPlayer();
 
 			// Set the player name
-			TextView playerName = (TextView) row
-					.findViewById(R.id.playerNameEditText);
+			TextView playerName = (TextView) row.findViewById(R.id.playerNameEditText);
 			playerName.setText(config.getSelName(i));
 
 			// Set the initial selection for the spinner
 			GamePlayerType[] selTypes = config.getSelTypes(); // the player types in the config
 			GamePlayerType[] availTypes = config.getAvailTypes(); // the available player types
-			Spinner typeSpinner = (Spinner) row
-					.findViewById(R.id.playerTypeSpinner); // the spinner for the current player
+			Spinner typeSpinner = (Spinner) row.findViewById(R.id.playerTypeSpinner); // the spinner for the current player
 			// search through to find the one whose label matches; set it as the selection
 			for (int j = 0; j < availTypes.length; ++j) {
 				if (selTypes[i].getTypeName().equals(availTypes[j].getTypeName())) {
@@ -805,5 +805,6 @@ View.OnClickListener {
 	public void doFinish(View v) {
 		finish();
 	}
+
 }
 

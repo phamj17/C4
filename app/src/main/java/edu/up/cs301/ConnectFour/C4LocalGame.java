@@ -51,8 +51,7 @@ public class C4LocalGame extends LocalGame {
             return false;
         }
         if (action instanceof C4DropActionCol0) {
-            Canvas g = new Canvas();
-            state.dropActionCol0(g);
+            state.dropActionCol0();
             return true;
         }
         if (action instanceof C4DropActionCol1) {
@@ -103,10 +102,18 @@ public class C4LocalGame extends LocalGame {
     @Override
     public String checkIfGameOver() {
         String victory = null;
-        if (state.gameOver() == true) {
-            victory = "Game over";
+        if (state.gameOver()) {
+            if(state.getTurn() == 1)
+            {
+                victory = "YELLOW WON";
+            }
+            if(state.getTurn() == 0)
+            {
+                victory = "RED WON";
+            }
         }
+
         return victory;
     }
 
-}// class PigLocalGame
+}// class C4LocalGame

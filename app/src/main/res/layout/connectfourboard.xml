@@ -434,6 +434,7 @@
                 android:layout_height="fill_parent"
                 android:text="Main Menu"
                 android:id="@+id/mainMenu"
+                android:onClick="doFinish"
                 android:layout_weight="1" />
 
             <Button
@@ -441,6 +442,7 @@
                 android:layout_height="fill_parent"
                 android:text="Surrender"
                 android:id="@+id/surrender"
+                android:onClick="doFinish"
                 android:layout_weight="1" />
 
             <Button
