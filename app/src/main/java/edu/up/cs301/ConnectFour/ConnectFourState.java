@@ -9,8 +9,14 @@ import edu.up.cs301.game.infoMsg.GameState;
  * Created by phamj17 on 11/5/2015.
  */
 public class ConnectFourState extends GameState {
+    private Piece lastPiecePlayed = null;
+    int rowHelper = 0;
+    int columnHelper = 0;
+
+    int rowHelper1stTurn= 0;
+    int columnHelper1stTurn = 0;
     //helper
-    int count =0;
+    int countCinco = 0;
 
     private final int EMPTY = 0;
     //player 1 piece
@@ -65,16 +71,20 @@ public class ConnectFourState extends GameState {
     //set a piece...
     public boolean setPiece(int col) {
         //temp variables
+
+        rowHelper1stTurn = rowHelper;
+        columnHelper1stTurn = columnHelper;
         int[][] tempBoard = getBoard();
         int[] tempCol = getColumn();
         //check if board exists, if piece is out of bounds
         if (tempBoard == null || col < 0 || col > 6) {
+            countCinco = 1;
             return false;
         }
 
         //the column is already full, so return false
         if (tempCol[col] >= 6) {
-            count = 1;
+            countCinco = 1;
             return false;
         }
         //else, do this stuff
@@ -84,12 +94,16 @@ public class ConnectFourState extends GameState {
             //change the turn
             if (turn == 0) {
                 tempBoard[tempBoard.length - 1 - tempRow][col] = RED;
+                rowHelper = tempBoard.length - 1 - tempRow;
+                columnHelper = col;
                 //turn = 1;
             }
             //else if it's player 2's turn, set the piece to black
             //change the turn
             else if (turn == 1) {
                 tempBoard[tempBoard.length - 1 - tempRow][col] = BLACK;
+                rowHelper = tempBoard.length - 1 - tempRow;
+                columnHelper = col;
                 //turn = 0;
             }
 
@@ -256,20 +270,20 @@ public class ConnectFourState extends GameState {
         else {
             if (turn == 0)
             {
-                if(count == 1)
+                if(countCinco == 1)
                 {
                     turn = 0;
-                    count = 0;
+                    countCinco = 0;
                 }
                 else {
                     turn = 1;
                 }
             }
             else if (turn == 1){
-                if(count == 1)
+                if(countCinco == 1)
                 {
                     turn = 1;
-                    count = 0;
+                    countCinco = 0;
                 }
                 else {
                     turn = 0;
@@ -300,10 +314,7 @@ public class ConnectFourState extends GameState {
         return column;
     }
 
-    public void dropActionCol0()
-    {
-        setPiece(0);
-    }
+    public void dropActionCol0() { setPiece(0); }
 
     public void dropActionCol1()
     {
@@ -334,4 +345,53 @@ public class ConnectFourState extends GameState {
     {
         setPiece(6);
     }
+
+    public void resetAction()
+    {
+        int[][] tempBoard = getBoard();
+        int[] tempCol = getColumn();
+
+        for (int i = 0; i < tempBoard.length; i++) {
+            for (int j = 0; j < tempBoard[i].length; j++) {
+                tempCol[j] = 0;
+                tempBoard[i][j] = EMPTY;
+            }
+        }
+        column = tempCol;
+        board = tempBoard;
+
+    }
+
+    public void undoAction()
+    {
+        int[][] tempBoard = getBoard();
+        int[] tempCol = getColumn();
+
+
+        tempBoard[rowHelper][columnHelper] = EMPTY;
+        tempCol[columnHelper] = tempCol[columnHelper] - 1;
+
+        tempBoard[rowHelper1stTurn][columnHelper1stTurn] = EMPTY;
+        tempCol[columnHelper1stTurn] = tempCol[columnHelper1stTurn] - 1;
+
+//        if(turn == 1){
+//            System.out.println("TURN WAS 1, NOW IT IS 0");
+//            turn = 0;
+//        }
+//        else if(turn == 0){
+//            System.out.println("TURN WAS 0, NOW it IS 1");
+//            turn = 1;
+//        }
+
+        turn = 0;
+
+        column = tempCol;
+        board = tempBoard;
+    }
+
+    public int getEMPTY(){return EMPTY;}
+
+    public int getRED(){return RED;}
+
+    public int getBLACK(){return BLACK;}
 }

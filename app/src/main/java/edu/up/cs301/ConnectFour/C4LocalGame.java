@@ -78,6 +78,14 @@ public class C4LocalGame extends LocalGame {
             state.dropActionCol6();
             return true;
         }
+        if (action instanceof ResetAction) {
+            state.resetAction();
+            return true;
+        }
+        if (action instanceof UndoAction){
+            state.undoAction();
+            return true;
+        }
         return false;
 
     }//makeMove

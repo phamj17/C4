@@ -440,9 +440,8 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="Surrender"
-                android:id="@+id/surrender"
-                android:onClick="doFinish"
+                android:text="Reset"
+                android:id="@+id/reset"
                 android:layout_weight="1" />
 
             <Button

@@ -21,6 +21,9 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
     ConnectFourState newState = new ConnectFourState();
     private int[][] tempBoard = new int[6][7];
 
+    private Button reset = null;
+    private Button undo = null;
+
     // These variables will reference widgets that will be modified during play
     private ImageButton    column1Button = null;
     private ImageButton    column2Button = null;
@@ -96,6 +99,7 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
             //TODO GET the board please... please...
         }
         tempBoard = newState.getBoard();
+
         if (tempBoard[5][0]==1)
         {
             imageView5.setImageResource(R.mipmap.red);
@@ -104,6 +108,12 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView5.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[5][0]== 0)
+        {
+            imageView5.setImageResource(R.mipmap.clear);
+        }
+
+
         if (tempBoard[4][0]==1)
         {
             imageView4.setImageResource(R.mipmap.red);
@@ -112,6 +122,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView4.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[4][0]== 0)
+        {
+            imageView4.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[3][0]==1)
         {
             imageView3.setImageResource(R.mipmap.red);
@@ -120,6 +135,12 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView3.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[3][0]== 0)
+        {
+            imageView3.setImageResource(R.mipmap.clear);
+        }
+
+
         if (tempBoard[2][0]==1)
         {
             imageView2.setImageResource(R.mipmap.red);
@@ -128,6 +149,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView2.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[2][0]== 0)
+        {
+            imageView2.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[1][0]==1)
         {
             imageView1.setImageResource(R.mipmap.red);
@@ -136,6 +162,12 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView1.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[1][0]== 0)
+        {
+            imageView1.setImageResource(R.mipmap.clear);
+        }
+
+
         if (tempBoard[0][0]==1)
         {
             imageView0.setImageResource(R.mipmap.red);
@@ -143,6 +175,10 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         else if(tempBoard[0][0]==2)
         {
             imageView0.setImageResource(R.mipmap.yellow);
+        }
+        else if(tempBoard[0][0]== 0)
+        {
+            imageView0.setImageResource(R.mipmap.clear);
         }
 
 
@@ -157,6 +193,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView11.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[5][1]== 0)
+        {
+            imageView11.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[4][1]==1)
         {
             imageView10.setImageResource(R.mipmap.red);
@@ -164,6 +205,10 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         else if(tempBoard[4][1]==2)
         {
             imageView10.setImageResource(R.mipmap.yellow);
+        }
+        else if(tempBoard[4][1]== 0)
+        {
+            imageView10.setImageResource(R.mipmap.clear);
         }
         if (tempBoard[3][1]==1)
         {
@@ -173,6 +218,10 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView9.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[3][1]== 0)
+        {
+            imageView9.setImageResource(R.mipmap.clear);
+        }
         if (tempBoard[2][1]==1)
         {
             imageView8.setImageResource(R.mipmap.red);
@@ -181,6 +230,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView8.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[2][1]== 0)
+        {
+            imageView8.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[1][1]==1)
         {
             imageView7.setImageResource(R.mipmap.red);
@@ -189,6 +243,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView7.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[1][1]== 0)
+        {
+            imageView7.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[0][1]==1)
         {
             imageView6.setImageResource(R.mipmap.red);
@@ -196,6 +255,10 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         else if(tempBoard[0][1]==2)
         {
             imageView6.setImageResource(R.mipmap.yellow);
+        }
+        else if(tempBoard[0][1]== 0)
+        {
+            imageView6.setImageResource(R.mipmap.clear);
         }
 
 
@@ -209,6 +272,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView17.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[5][2]== 0)
+        {
+            imageView17.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[4][2]==1)
         {
             imageView16.setImageResource(R.mipmap.red);
@@ -216,6 +284,10 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         else if(tempBoard[4][2]==2)
         {
             imageView16.setImageResource(R.mipmap.yellow);
+        }
+        else if(tempBoard[4][2]== 0)
+        {
+            imageView16.setImageResource(R.mipmap.clear);
         }
         if (tempBoard[3][2]==1)
         {
@@ -225,6 +297,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView15.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[3][2]== 0)
+        {
+            imageView15.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[2][2]==1)
         {
             imageView14.setImageResource(R.mipmap.red);
@@ -233,6 +310,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView14.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[2][2]== 0)
+        {
+            imageView14.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[1][2]==1)
         {
             imageView13.setImageResource(R.mipmap.red);
@@ -241,6 +323,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView13.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[1][2]== 0)
+        {
+            imageView13.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[0][2]==1)
         {
             imageView12.setImageResource(R.mipmap.red);
@@ -248,6 +335,10 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         else if(tempBoard[0][2]==2)
         {
             imageView12.setImageResource(R.mipmap.yellow);
+        }
+        else if(tempBoard[0][2]== 0)
+        {
+            imageView12.setImageResource(R.mipmap.clear);
         }
 
 
@@ -261,6 +352,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView23.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[5][3]== 0)
+        {
+            imageView23.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[4][3]==1)
         {
             imageView22.setImageResource(R.mipmap.red);
@@ -269,6 +365,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView22.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[4][3]== 0)
+        {
+            imageView22.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[3][3]==1)
         {
             imageView21.setImageResource(R.mipmap.red);
@@ -277,6 +378,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView21.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[3][3]== 0)
+        {
+            imageView21.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[2][3]==1)
         {
             imageView20.setImageResource(R.mipmap.red);
@@ -285,6 +391,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView20.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[2][3]== 0)
+        {
+            imageView20.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[1][3]==1)
         {
             imageView19.setImageResource(R.mipmap.red);
@@ -293,6 +404,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView19.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[1][3]== 0)
+        {
+            imageView19.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[0][3]==1)
         {
             imageView18.setImageResource(R.mipmap.red);
@@ -300,6 +416,10 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         else if(tempBoard[0][3]==2)
         {
             imageView18.setImageResource(R.mipmap.yellow);
+        }
+        else if(tempBoard[0][3]== 0)
+        {
+            imageView18.setImageResource(R.mipmap.clear);
         }
 
 
@@ -312,6 +432,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView29.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[5][4]== 0)
+        {
+            imageView29.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[4][4]==1)
         {
             imageView28.setImageResource(R.mipmap.red);
@@ -320,6 +445,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView28.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[4][4]== 0)
+        {
+            imageView28.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[3][4]==1)
         {
             imageView27.setImageResource(R.mipmap.red);
@@ -328,6 +458,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView27.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[3][4]== 0)
+        {
+            imageView27.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[2][4]==1)
         {
             imageView26.setImageResource(R.mipmap.red);
@@ -336,6 +471,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView26.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[2][4]== 0)
+        {
+            imageView26.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[1][4]==1)
         {
             imageView25.setImageResource(R.mipmap.red);
@@ -344,6 +484,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView25.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[1][4]== 0)
+        {
+            imageView25.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[0][4]==1)
         {
             imageView24.setImageResource(R.mipmap.red);
@@ -351,6 +496,10 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         else if(tempBoard[0][4]==2)
         {
             imageView24.setImageResource(R.mipmap.yellow);
+        }
+        else if(tempBoard[0][4]== 0)
+        {
+            imageView24.setImageResource(R.mipmap.clear);
         }
 
 
@@ -362,6 +511,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView35.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[5][5]== 0)
+        {
+            imageView35.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[4][5]==1)
         {
             imageView34.setImageResource(R.mipmap.red);
@@ -370,6 +524,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView34.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[4][5]== 0)
+        {
+            imageView34.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[3][5]==1)
         {
             imageView33.setImageResource(R.mipmap.red);
@@ -378,6 +537,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView33.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[3][5]== 0)
+        {
+            imageView33.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[2][5]==1)
         {
             imageView32.setImageResource(R.mipmap.red);
@@ -386,6 +550,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView32.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[2][5]== 0)
+        {
+            imageView32.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[1][5]==1)
         {
             imageView31.setImageResource(R.mipmap.red);
@@ -394,6 +563,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView31.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[1][5]== 0)
+        {
+            imageView31.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[0][5]==1)
         {
             imageView30.setImageResource(R.mipmap.red);
@@ -401,6 +575,10 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         else if(tempBoard[0][5]==2)
         {
             imageView30.setImageResource(R.mipmap.yellow);
+        }
+        else if(tempBoard[0][5]== 0)
+        {
+            imageView30.setImageResource(R.mipmap.clear);
         }
 
 
@@ -413,6 +591,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView41.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[5][6]== 0)
+        {
+            imageView41.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[4][6]==1)
         {
             imageView40.setImageResource(R.mipmap.red);
@@ -421,6 +604,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView40.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[4][6]== 0)
+        {
+            imageView40.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[3][6]==1)
         {
             imageView39.setImageResource(R.mipmap.red);
@@ -429,6 +617,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView39.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[3][6]== 0)
+        {
+            imageView39.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[2][6]==1)
         {
             imageView38.setImageResource(R.mipmap.red);
@@ -437,6 +630,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView38.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[2][6]== 0)
+        {
+            imageView38.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[1][6]==1)
         {
             imageView37.setImageResource(R.mipmap.red);
@@ -445,6 +643,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView37.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[1][6]== 0)
+        {
+            imageView37.setImageResource(R.mipmap.clear);
+        }
+
         if (tempBoard[0][6]==1)
         {
             imageView36.setImageResource(R.mipmap.red);
@@ -453,6 +656,11 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         {
             imageView36.setImageResource(R.mipmap.yellow);
         }
+        else if(tempBoard[0][6]== 0)
+        {
+            imageView36.setImageResource(R.mipmap.clear);
+        }
+
     }//receiveInfo
 
 
@@ -478,10 +686,6 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
             C4DropActionCol2 dropActionCol2 = new C4DropActionCol2(this);
             game.sendAction(dropActionCol2);
         }
-        if (button == column3Button) {
-            C4DropActionCol3 dropActionCol3 = new C4DropActionCol3(this);
-            game.sendAction(dropActionCol3);
-        }
         if (button == column4Button) {
             C4DropActionCol3 dropActionCol3 = new C4DropActionCol3(this);
             game.sendAction(dropActionCol3);
@@ -497,6 +701,15 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         if (button == column7Button) {
             C4DropActionCol6 dropActionCol6 = new C4DropActionCol6(this);
             game.sendAction(dropActionCol6);
+        }
+        if (button == reset){
+            ResetAction resetAction = new ResetAction(this);
+            game.sendAction(resetAction);
+        }
+        if (button == undo)
+        {
+            UndoAction undoAction = new UndoAction(this);
+            game.sendAction(undoAction);
         }
 
     }// onClick
@@ -516,6 +729,9 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
 
         // Load the layout resource for our GUI
         activity.setContentView(R.layout.connectfourboard);
+
+        this.reset = (Button) activity.findViewById(R.id.reset);
+        this.undo = (Button) activity.findViewById(R.id.undo);
 
         //Initialize the widget reference member variables
         this.column1Button = (ImageButton)activity.findViewById(R.id.Col1);
@@ -577,6 +793,9 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
         column5Button.setOnClickListener(this);
         column6Button.setOnClickListener(this);
         column7Button.setOnClickListener(this);
+
+        reset.setOnClickListener(this);
+        undo.setOnClickListener(this);
 
     }//setAsGui
 

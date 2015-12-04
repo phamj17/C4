@@ -111,9 +111,9 @@ int id remoteIPCodeEditText 0x7f0a004f
 int id remoteNameEditText 0x7f0a004c
 int id remoteTabLayout 0x7f0a003f
 int id remote_player_spinner 0x7f0a004d
+int id reset 0x7f0a0036
 int id saveConfigButton 0x7f0a0039
 int id serverIPCode 0x7f0a004e
-int id surrender 0x7f0a0036
 int id tabHost 0x7f0a0038
 int id tableDataRow 0x7f0a004b
 int id tableHeadingRow 0x7f0a0043
