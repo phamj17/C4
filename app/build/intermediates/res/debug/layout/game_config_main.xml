@@ -43,6 +43,7 @@
             android:onClick="doFinish"
             android:text="Back" />
 
+
     </RelativeLayout>
 
-</RelativeLayout><!-- From: file:/C:/Users/macnary17/Desktop/C4/app/src/main/res/layout/game_config_main.xml -->
+</RelativeLayout><!-- From: file:/P:/CS301/C4/app/src/main/res/layout/game_config_main.xml -->

@@ -440,14 +440,14 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="Reset"
+                android:text="Surrender"
                 android:id="@+id/reset"
                 android:layout_weight="1" />
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="Undo (Easy Mode)"
+                android:text="Undo"
                 android:id="@+id/undo"
                 android:layout_weight="1" />
         </LinearLayout>

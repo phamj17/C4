@@ -27,6 +27,7 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
             board = newState.getBoard();
             int playerIdx = newState.getTurn();
         }
+
         int move;
         int stopHuman = -1;
         Random rand = new Random();

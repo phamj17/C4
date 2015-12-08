@@ -11,6 +11,7 @@ import edu.up.cs301.game.infoMsg.GameState;
 public class ConnectFourState extends GameState {
     private Piece lastPiecePlayed = null;
     int rowHelper = 0;
+    int computerDifficulty;
     int columnHelper = 0;
 
     int rowHelper1stTurn= 0;
@@ -29,6 +30,9 @@ public class ConnectFourState extends GameState {
     private boolean gameOver;
     //0 for player one, 1 for player two/computer player
     private int turn;
+
+    private boolean hasReset = false;
+    private boolean hasUndo = false;
 
     //number of pieces for each column
     private int[] column = new int[7];
@@ -71,7 +75,10 @@ public class ConnectFourState extends GameState {
     //set a piece...
     public boolean setPiece(int col) {
         //temp variables
-
+        if (hasUndo)
+        {
+            hasUndo = false;
+        }
         rowHelper1stTurn = rowHelper;
         columnHelper1stTurn = columnHelper;
         int[][] tempBoard = getBoard();
@@ -111,8 +118,6 @@ public class ConnectFourState extends GameState {
             tempCol[col]++;
             board = tempBoard;
             column = tempCol;
-
-
 
             return true;
         }
@@ -268,26 +273,26 @@ public class ConnectFourState extends GameState {
             return true;
         }
         else {
-            if (turn == 0)
-            {
-                if(countCinco == 1)
-                {
-                    turn = 0;
-                    countCinco = 0;
-                }
-                else {
-                    turn = 1;
+            if (!hasReset) {
+                if (turn == 0) {
+                    if (countCinco == 1) {
+                        turn = 0;
+                        countCinco = 0;
+                    } else {
+                        turn = 1;
+                    }
+                } else if (turn == 1) {
+                    if (countCinco == 1) {
+                        turn = 1;
+                        countCinco = 0;
+                    } else {
+                        turn = 0;
+                    }
                 }
             }
-            else if (turn == 1){
-                if(countCinco == 1)
-                {
-                    turn = 1;
-                    countCinco = 0;
-                }
-                else {
-                    turn = 0;
-                }
+            else
+            {
+                hasReset = false;
             }
             return false;
         }
@@ -357,22 +362,29 @@ public class ConnectFourState extends GameState {
                 tempBoard[i][j] = EMPTY;
             }
         }
+        hasReset = true;
+
         column = tempCol;
         board = tempBoard;
+        if (gameOver = true)
+        {
+            gameOver = false;
+        }
 
     }
 
     public void undoAction()
     {
-        int[][] tempBoard = getBoard();
-        int[] tempCol = getColumn();
+        if (!hasUndo) {
+            int[][] tempBoard = getBoard();
+            int[] tempCol = getColumn();
 
 
-        tempBoard[rowHelper][columnHelper] = EMPTY;
-        tempCol[columnHelper] = tempCol[columnHelper] - 1;
+            tempBoard[rowHelper][columnHelper] = EMPTY;
+            tempCol[columnHelper] = tempCol[columnHelper] - 1;
 
-        tempBoard[rowHelper1stTurn][columnHelper1stTurn] = EMPTY;
-        tempCol[columnHelper1stTurn] = tempCol[columnHelper1stTurn] - 1;
+            tempBoard[rowHelper1stTurn][columnHelper1stTurn] = EMPTY;
+            tempCol[columnHelper1stTurn] = tempCol[columnHelper1stTurn] - 1;
 
 //        if(turn == 1){
 //            System.out.println("TURN WAS 1, NOW IT IS 0");
@@ -383,10 +395,23 @@ public class ConnectFourState extends GameState {
 //            turn = 1;
 //        }
 
-        turn = 0;
+            turn = 0;
+            hasReset = true;
 
-        column = tempCol;
-        board = tempBoard;
+            column = tempCol;
+            board = tempBoard;
+            hasUndo = true;
+        }
+        else
+        {
+            hasReset = true;
+        }
+
+    }
+
+    public void setComputerDifficulty(int difficulty)
+    {
+        computerDifficulty = difficulty;
     }
 
     public int getEMPTY(){return EMPTY;}
