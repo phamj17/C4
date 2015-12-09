@@ -47,7 +47,8 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
         if (stopHuman != -1) {
             move = stopHuman;
         } else {
-            move = rand.nextInt(7);
+            //move = rand.nextInt(7);
+            move = 6;
         }
 
         //If opponent cant get 4 in a row, move randomly
@@ -123,41 +124,63 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
         } else if (newState.getTurn() == 0) {
             piece = newState.getBLACK();
         }
-        int tempRow;
+
+        int missingCol = -1;
 
         for (int i = board.length - 1; i >= 0; i--) {
-            for (int j = 0; j < board[i].length; j++) {
+            for (int j = 0; j <= board.length - 4; j++) {
                 count = 0;
-                if (board[i][j] == piece) {
-                    if (j <= 5) {
-                        tempRow = i;
-                        for (int a = 0; a < 2; a++) {
-                            if (board[tempRow][j + a] == piece) {
-                                count++;
-                                if (count >= 2) {
-                                    if (j + a + 1 < 7 && board[tempRow][j + a + 1] == newState.getEMPTY()) {
-                                        if (tempRow + 1 >= 6 || board[tempRow + 1][j + a + 1] != newState.getEMPTY()) {
-                                            return j + a + 1;
-                                        }
-                                    }
-                                    if (j - 1 >= 0 && board[tempRow][j - 1] == newState.getEMPTY()) {
-                                        if (tempRow + 1 >= 6 || board[tempRow + 1][j - 1] != newState.getEMPTY()) {
-                                            return j - 1;
-                                        }
-                                    }
-                                }
-                            } else {
-                                count = 0;
-                                a = 3;
-                            }
-                        }
+                missingCol = -1;
+                for (int a = 0; a < 4; a++) {
+                    if (board[i][j + a] == piece) {count++;}
+                    else if (board[i][j + a] == newState.getEMPTY()) {missingCol = j + a;}
+                    else {missingCol = -1;}
+                }
+
+                if (count == 3) {return missingCol;}
+                if (i != board.length - 1 && missingCol != -1) {
+                    if (board[i + 1][missingCol] != newState.getEMPTY()) {
+                        return -1;
                     }
                 }
             }
-
         }
         return -1;
+
     }
+//        for (int i = board.length - 1; i >= 0; i--) {
+//            for (int j = 0; j < board[i].length; j++) {
+//                count = 0;
+//                if (board[i][j] == piece) {
+//                    if (j <= 5) {
+//                        tempRow = i;
+//                        for (int a = 0; a < 2; a++) {
+//                            if (board[tempRow][j + a] == piece) {
+//                                count++;
+//                                if (count >= 2) {
+//                                    if (j + a + 1 < 7 && board[tempRow][j + a + 1] == newState.getEMPTY()) {
+//                                        if (tempRow + 1 >= 6 || board[tempRow + 1][j + a + 1] != newState.getEMPTY()) {
+//                                            return j + a + 1;
+//                                        }
+//                                    }
+//                                    if (j - 1 >= 0 && board[tempRow][j - 1] == newState.getEMPTY()) {
+//                                        if (tempRow + 1 >= 6 || board[tempRow + 1][j - 1] != newState.getEMPTY()) {
+//                                            return j - 1;
+//                                        }
+//                                    }
+//                                }
+//                            } else {
+//                                count = 0;
+//                                a = 3;
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//
+//        }
+//        return -1;
+
 
 //    public int stopDiagonalWin() {
 //        boolean keepGoing = false;
