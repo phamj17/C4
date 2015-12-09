@@ -163,13 +163,7 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
                 for (int a = 0; a < 3; a++) {
                     if (board[i][j + a] == piece) {count++;}
                     else if (board[i][j + a] == newState.getEMPTY()) {
-                        if (a == 0 || a == 2) {
-                            missingCol = j + a;
-                        }
-                        else if (a == 1) {
-                            count = 0;
-                            missingCol = -1;
-                        }
+                        missingCol = j + a;
                     }
                     else {
                         missingCol = -1;
