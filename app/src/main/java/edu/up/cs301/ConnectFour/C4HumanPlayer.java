@@ -24,6 +24,7 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener{
     private Button reset = null;
     private Button undo = null;
 
+
     // These variables will reference widgets that will be modified during play
     private ImageButton    column1Button = null;
     private ImageButton    column2Button = null;
