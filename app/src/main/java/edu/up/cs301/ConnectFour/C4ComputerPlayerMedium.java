@@ -29,39 +29,49 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
 
         try {
             TimeUnit.SECONDS.sleep(1);
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
         }
 
-        int move;
+        int move=0;
         int stopHuman = -1;
         int winner = -1;
+        int winner2H = -1;
         Random rand = new Random();
-
-
-        if (stopVerticalWin() != -1) {
-            stopHuman = stopVerticalWin();
-        }
-        else if (stopDiagonalWin()!=-1) {
-            stopHuman = stopDiagonalWin();
-        }
-        else if (stopHorizontalWin() != -1) {
-            stopHuman = stopHorizontalWin();
-        }
-        else if (stop2Horizontal() != -1) {
-            stopHuman = stop2Horizontal();
-        }
+        int[] col = newState.getColumn();
+        int midCol = col[3];
 
         if (winV() != -1) {
             winner = winV();
+        } else if (winD() != -1) {
+            winner = winD();
+        } else if (winH() != -1) {
+            winner = winH();
+        } else if (win2H() != -1) {
+            winner2H = win2H();
         }
+
+        if (stopVerticalWin() != -1) {
+            stopHuman = stopVerticalWin();
+        } else if (stopDiagonalWin() != -1) {
+            stopHuman = stopDiagonalWin();
+        } else if (stopHorizontalWin() != -1) {
+            stopHuman = stopHorizontalWin();
+        } else if (stop2Horizontal() != -1) {
+            stopHuman = stop2Horizontal();
+        }
+
+
 
         if (winner != -1) {
             move = winner;
-        }
-        else if (stopHuman != -1) {
+        } else if (stopHuman != -1) {
             move = stopHuman;
-        } else {
+        }else if (winner2H!= -1) {
+                move = winner2H;
+        } else if (midCol < 6) {
+            move = 3;
+        }
+        else {
             move = rand.nextInt(7);
         }
 
@@ -133,9 +143,13 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                 count = 0;
                 missingCol = -1;
                 for (int a = 0; a < 4; a++) {
-                    if (board[i][j + a] == piece) {count++;}
-                    else if (board[i][j + a] == newState.getEMPTY()) {missingCol = j + a;}
-                    else {missingCol = -1;}
+                    if (board[i][j + a] == piece) {
+                        count++;
+                    } else if (board[i][j + a] == newState.getEMPTY()) {
+                        missingCol = j + a;
+                    } else {
+                        missingCol = -1;
+                    }
                 }
 
                 if (count == 3 && missingCol != -1) {
@@ -143,8 +157,7 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                         if (board[i + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    }
-                    else if (i == board.length - 1) {
+                    } else if (i == board.length - 1) {
                         return missingCol;
                     }
                 }
@@ -166,11 +179,11 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                 count = 0;
                 missingCol = -1;
                 for (int a = 0; a < 3; a++) {
-                    if (board[i][j + a] == piece) {count++;}
-                    else if (board[i][j + a] == newState.getEMPTY()) {
+                    if (board[i][j + a] == piece) {
+                        count++;
+                    } else if (board[i][j + a] == newState.getEMPTY()) {
                         missingCol = j + a;
-                    }
-                    else {
+                    } else {
                         missingCol = -1;
                     }
                 }
@@ -180,8 +193,7 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                         if (board[i + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    }
-                    else if (i == board.length - 1) {
+                    } else if (i == board.length - 1) {
                         return missingCol;
                     }
                 }
@@ -202,12 +214,12 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                 count = 0;
                 missingCol = -1;
                 for (int a = 0; a < 4; a++) {
-                    if (board[i + a][j + a] == piece) {count++;}
-                    else if(board[i + a][j + a] == newState.getEMPTY()) {
+                    if (board[i + a][j + a] == piece) {
+                        count++;
+                    } else if (board[i + a][j + a] == newState.getEMPTY()) {
                         missingCol = j + a;
                         tempRow = i + a;
-                    }
-                    else {
+                    } else {
                         missingCol = -1;
                         tempRow = -1;
                     }
@@ -217,8 +229,7 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                         if (board[tempRow + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    }
-                    else if (tempRow == board.length - 1) {
+                    } else if (tempRow == board.length - 1) {
                         return missingCol;
                     }
                 }
@@ -229,12 +240,12 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                 count = 0;
                 missingCol = -1;
                 for (int a = 0; a < 4; a++) {
-                    if (board[i - a][j + a] == piece) {count++;}
-                    else if(board[i - a][j + a] == newState.getEMPTY()) {
+                    if (board[i - a][j + a] == piece) {
+                        count++;
+                    } else if (board[i - a][j + a] == newState.getEMPTY()) {
                         missingCol = j + a;
                         tempRow = i - a;
-                    }
-                    else {
+                    } else {
                         missingCol = -1;
                         tempRow = -1;
                     }
@@ -244,8 +255,7 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                         if (board[tempRow + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    }
-                    else if (tempRow == board.length - 1) {
+                    } else if (tempRow == board.length - 1) {
                         return missingCol;
                     }
                 }
@@ -272,10 +282,140 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                                     return tempCol;
                                 }
                             }
-                        }
-                        else {
+                        } else {
                             count = 0;
                         }
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+    public int winH() {
+
+        int count = 0;
+        int piece = newState.getBLACK();
+
+        int missingCol = -1;
+
+        for (int i = board.length - 1; i >= 0; i--) {
+            for (int j = 0; j <= board[i].length - 4; j++) {
+                count = 0;
+                missingCol = -1;
+                for (int a = 0; a < 4; a++) {
+                    if (board[i][j + a] == piece) {
+                        count++;
+                    } else if (board[i][j + a] == newState.getEMPTY()) {
+                        missingCol = j + a;
+                    } else {
+                        missingCol = -1;
+                    }
+                }
+
+                if (count == 3 && missingCol != -1) {
+                    if (i < board.length - 1) {
+                        if (board[i + 1][missingCol] != newState.getEMPTY()) {
+                            return missingCol;
+                        }
+                    } else if (i == board.length - 1) {
+                        return missingCol;
+                    }
+                }
+            }
+        }
+        return -1;
+
+    }
+    public int winD() {
+
+        int count = 0;
+        int missingCol = -1;
+        int tempRow = -1;
+            int piece = newState.getBLACK();
+
+        for (int i = 0; i <= board.length - 4; i++) {
+            for (int j = 0; j <= board[i].length - 4; j++) {
+                count = 0;
+                missingCol = -1;
+                for (int a = 0; a < 4; a++) {
+                    if (board[i + a][j + a] == piece) {
+                        count++;
+                    } else if (board[i + a][j + a] == newState.getEMPTY()) {
+                        missingCol = j + a;
+                        tempRow = i + a;
+                    } else {
+                        missingCol = -1;
+                        tempRow = -1;
+                    }
+                }
+                if (count == 3 && missingCol != -1) {
+                    if (tempRow < board.length - 1) {
+                        if (board[tempRow + 1][missingCol] != newState.getEMPTY()) {
+                            return missingCol;
+                        }
+                    } else if (tempRow == board.length - 1) {
+                        return missingCol;
+                    }
+                }
+            }
+        }
+        for (int i = board.length - 1; i >= 3; i--) {
+            for (int j = 0; j <= board[i].length - 4; j++) {
+                count = 0;
+                missingCol = -1;
+                for (int a = 0; a < 4; a++) {
+                    if (board[i - a][j + a] == piece) {
+                        count++;
+                    } else if (board[i - a][j + a] == newState.getEMPTY()) {
+                        missingCol = j + a;
+                        tempRow = i - a;
+                    } else {
+                        missingCol = -1;
+                        tempRow = -1;
+                    }
+                }
+                if (count == 3 && missingCol != -1) {
+                    if (tempRow < board.length - 1) {
+                        if (board[tempRow + 1][missingCol] != newState.getEMPTY()) {
+                            return missingCol;
+                        }
+                    } else if (tempRow == board.length - 1) {
+                        return missingCol;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+    public int win2H() {
+
+        int count = 0;
+        int piece = newState.getBLACK();
+
+        int missingCol = -1;
+
+        for (int i = board.length - 1; i >= 0; i--) {
+            for (int j = 0; j <= board[i].length - 3; j++) {
+                count = 0;
+                missingCol = -1;
+                for (int a = 0; a < 3; a++) {
+                    if (board[i][j + a] == piece) {
+                        count++;
+                    } else if (board[i][j + a] == newState.getEMPTY()) {
+                        missingCol = j + a;
+                    } else {
+                        missingCol = -1;
+                    }
+                }
+
+                if (count == 2 && missingCol != -1) {
+                    if (i < board.length - 1) {
+                        if (board[i + 1][missingCol] != newState.getEMPTY()) {
+                            return missingCol;
+                        }
+                    } else if (i == board.length - 1) {
+                        return missingCol;
                     }
                 }
             }

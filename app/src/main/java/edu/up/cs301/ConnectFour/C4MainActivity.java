@@ -39,18 +39,18 @@ public class C4MainActivity extends GameMainActivity {
             public GamePlayer createPlayer(String name) {
                 return new C4HumanPlayer(name);
             }});
-        playerTypes.add(new GamePlayerType("Computer Player (easy)") {
+        playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
             public GamePlayer createPlayer(String name) {
                 return new C4ComputerPlayerEasy(name);
             }});
-        playerTypes.add(new GamePlayerType("Computer Player (medium)") {
+        playerTypes.add(new GamePlayerType("Computer Player (smart)") {
             public GamePlayer createPlayer(String name) {
                 return new C4ComputerPlayerMedium(name);
             }});
-        playerTypes.add(new GamePlayerType("Computer Player (hard)") {
+        /*playerTypes.add(new GamePlayerType("Computer Player (hard)") {
             public GamePlayer createPlayer(String name) {
                 return new C4ComputerPlayerHard(name);
-            }});
+            }});*/
 
         // Create a game configuration class for Counter:
         GameConfig defaultConfig = new GameConfig(playerTypes, 1, 2, "Connect Four", PORT_NUMBER);

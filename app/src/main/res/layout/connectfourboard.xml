@@ -432,7 +432,7 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="Main Menu"
+                android:text="Quit"
                 android:id="@+id/mainMenu"
                 android:onClick="doFinish"
                 android:layout_weight="1" />
