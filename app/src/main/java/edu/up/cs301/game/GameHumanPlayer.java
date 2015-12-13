@@ -192,7 +192,7 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
 	/**
 	 * Sends a 'state' object to the game's thread.
 	 * 
-	 * @param into
+	 * @param info
 	 * 		the information object to send
 	 */
 	public void sendInfo(GameInfo info) {

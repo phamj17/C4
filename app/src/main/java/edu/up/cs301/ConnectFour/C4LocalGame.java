@@ -13,17 +13,18 @@ import android.graphics.Canvas;
 import android.util.Log;
 
 /**
- * class PigLocalGame controls the play of the game
+ * class C4LocalGame controls the play of the game
  *
  * @author Group 6
  * @version November 27
  */
 public class C4LocalGame extends LocalGame {
 
+    //instance variable
     public ConnectFourState state;
 
     /**
-     * This ctor creates a new game state
+     * This constructor creates a new game state
      */
     public C4LocalGame() {
         state = new ConnectFourState();
@@ -31,6 +32,9 @@ public class C4LocalGame extends LocalGame {
 
     /**
      * can the player with the given id take an action right now?
+     * @param playerIdx
+     * 		the player's player-number (ID)
+     * @return a boolean that says if they can move or not
      */
     @Override
     public boolean canMove(int playerIdx) {
@@ -50,6 +54,9 @@ public class C4LocalGame extends LocalGame {
         if (canMove(state.getTurn()) == false) {
             return false;
         }
+
+        //if the action is one of the drop actions, call the appropriate method
+        //on the state
         if (action instanceof C4DropActionCol0) {
             state.dropActionCol0();
             return true;
@@ -78,10 +85,14 @@ public class C4LocalGame extends LocalGame {
             state.dropActionCol6();
             return true;
         }
+
+        //if  the action is a reset action, call the resetAction method on the state
         if (action instanceof ResetAction) {
             state.resetAction();
             return true;
         }
+
+        //if  the action is an undo action, call the undoAction method on the state
         if (action instanceof UndoAction){
             state.undoAction();
             return true;
@@ -92,6 +103,7 @@ public class C4LocalGame extends LocalGame {
 
     /**
      * send the updated state to a given player
+     * @param p the GamePlayer
      */
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
@@ -110,17 +122,21 @@ public class C4LocalGame extends LocalGame {
     @Override
     public String checkIfGameOver() {
         String victory = null;
+        //if the game is over, check who won
         if (state.gameOver()) {
+            //if it's player 2's turn, set the string to say yellow won
             if(state.getTurn() == 1)
             {
                 victory = "YELLOW WON";
             }
+            //if it's player 1's turn, set the string to say yellow won
             if(state.getTurn() == 0)
             {
                 victory = "RED WON";
             }
         }
 
+        //return the string
         return victory;
     }
 

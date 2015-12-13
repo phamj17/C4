@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 /**
+ *
  * Created by macnary17 on 11/6/2015.
  */
 public class Piece {

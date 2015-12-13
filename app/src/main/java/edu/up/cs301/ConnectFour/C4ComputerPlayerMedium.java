@@ -7,20 +7,31 @@ import edu.up.cs301.game.GameComputerPlayer;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
 /**
+ * This class implements the hard AI for C4
  * Created by macnary17 on 12/1/2015.
  */
 public class C4ComputerPlayerMedium extends GameComputerPlayer {
 
     public int schmidty = 1;
 
+    //instance variables
     ConnectFourState newState = new ConnectFourState();
     //set up 2D array to hold board values
     public int[][] board = new int[6][7];
 
+    /**
+     * constructor for the C4ComputerPlayerMedium
+     *
+     * @param name
+     */
     public C4ComputerPlayerMedium(String name) {
         super(name);
     }
 
+    /**
+     * Receives info
+     * @param info - variable that holds the game info
+     */
     protected void receiveInfo(GameInfo info) {
         //Check if opponent can get 4 in a row
         if (info instanceof ConnectFourState) {
@@ -34,6 +45,7 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
         } catch (InterruptedException e) {
         }
 
+        //method variables
         int move=0;
         int stopHuman = -1;
         int winner = -1;
@@ -62,22 +74,28 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
             stopHuman = stop2Horizontal();
         }
 
-
-
+        //if AI can win, move there
         if (winner != -1) {
             move = winner;
-        } else if (stopHuman != -1) {
+        }
+        //else if human can win, block
+        else if (stopHuman != -1) {
             move = stopHuman;
-        }else if (winner2H!= -1) {
+        }
+        //else if human has two pieces in a horizontal three slot, block
+        else if (winner2H!= -1) {
                 move = winner2H;
-        } else if (midCol < 6) {
+        }
+        //else if AI can move in the middle column, move there
+        else if (midCol < 6) {
             move = 3;
         }
+        //else, move randomly
         else {
             move = rand.nextInt(7);
         }
 
-        //If opponent cant get 4 in a row, move randomly
+        //move actions for the computer player
         if (move == 0) {
             C4DropActionCol0 dropActionCol0 = new C4DropActionCol0(this);
             game.sendAction(dropActionCol0);
@@ -100,29 +118,43 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
             C4DropActionCol6 dropActionCol6 = new C4DropActionCol6(this);
             game.sendAction(dropActionCol6);
         }
-        //random movements
     }
 
+    /**
+     * Algorithm that stops a vertical win
+     *
+     * @return an int which tells the AI where to play its piece to block a vertical win
+     */
     public int stopVerticalWin() {
+        //method variables
         int count = 0;
         int piece = newState.getRED();
         int tempCol;
 
+        //check the board
         for (int i = board.length - 1; i >= 0; i--) {
             for (int j = 0; j < board[i].length; j++) {
                 count = 0;
+                //if we find a piece
                 if (board[i][j] == piece) {
+                    //can only get a vertical win if the row is >=3, so check that
                     if (i >= 3) {
+                        //save the column
                         tempCol = j;
+                        //for loop that checks if there is already 3 in a row
                         for (int a = 0; a < 3; a++) {
+                            //if there's a same colored piece above the first piece, increment count
                             if (board[i - a][tempCol] == piece) {
                                 count++;
+                                //if the other player can win, block
                                 if (count >= 3) {
                                     if (board[i - a - 1][tempCol] == newState.getEMPTY()) {
                                         return tempCol;
                                     }
                                 }
-                            } else {
+                            }
+                            //else, reset the count
+                            else {
                                 count = 0;
                             }
                         }
@@ -133,33 +165,45 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
         return -1;
     }
 
+    /**
+     * Algorithm that stops a horizontal win
+     *
+     * @return an int which tells the AI where to play it's piece to block a horizontal win
+     */
     public int stopHorizontalWin() {
 
+        //method variables
         int count = 0;
         int piece = newState.getRED();
-
         int missingCol = -1;
 
+        //check the board
         for (int i = board.length - 1; i >= 0; i--) {
+            //limit the columns checked to prevent array exceptions
             for (int j = 0; j <= board[i].length - 4; j++) {
                 count = 0;
                 missingCol = -1;
+                //increment four times for each row and column checked
                 for (int a = 0; a < 4; a++) {
-                    if (board[i][j + a] == piece) {
-                        count++;
-                    } else if (board[i][j + a] == newState.getEMPTY()) {
-                        missingCol = j + a;
-                    } else {
-                        missingCol = -1;
-                    }
+                    //if the slot is the piece, increment the count
+                    if (board[i][j + a] == piece) {count++;}
+                    //else if the slot is empty, set the move to that column
+                    else if (board[i][j + a] == newState.getEMPTY()) {missingCol = j + a;}
+                    //else if the slot is the other piece, set the move to -1
+                    else {missingCol = -1;}
                 }
 
+                //if there are three pieces and an empty space...
                 if (count == 3 && missingCol != -1) {
+                    //if the row checked is above the bottom row...
                     if (i < board.length - 1) {
+                        //if the row can be moved to, return the move
                         if (board[i + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    } else if (i == board.length - 1) {
+                    }
+                    //if the row checked is the bottom row, return the move
+                    else if (i == board.length - 1) {
                         return missingCol;
                     }
                 }
@@ -169,33 +213,51 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
 
     }
 
+    /**
+     * Algorithm that blocks two pieces horizontally to prevent a double trap
+     *
+     * @return an int which tells the AI where to play to block a two pieces horizontally
+     */
     public int stop2Horizontal() {
 
+        //method variables
         int count = 0;
         int piece = newState.getRED();
-
         int missingCol = -1;
 
+        //checks the board
         for (int i = board.length - 1; i >= 0; i--) {
+            //limits the columns checked to avoid array exceptions
             for (int j = 0; j <= board[i].length - 3; j++) {
                 count = 0;
                 missingCol = -1;
+                //increments three times for each slot checked
                 for (int a = 0; a < 3; a++) {
+                    //if the slot is the piece, increment the count
                     if (board[i][j + a] == piece) {
                         count++;
-                    } else if (board[i][j + a] == newState.getEMPTY()) {
+                    }
+                    //else if the slot is empty, set the move to that column
+                    else if (board[i][j + a] == newState.getEMPTY()) {
                         missingCol = j + a;
-                    } else {
+                    }
+                    //else if the slot is the other piece, set the move to -1
+                    else {
                         missingCol = -1;
                     }
                 }
 
+                //if there are two pieces and an empty space...
                 if (count == 2 && missingCol != -1) {
+                    //if the row checked is above the bottom row...
                     if (i < board.length - 1) {
+                        //if the row checked can be moved to, return the move
                         if (board[i + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    } else if (i == board.length - 1) {
+                    }
+                    //if the row checked is the bottom row, return the move
+                    else if (i == board.length - 1) {
                         return missingCol;
                     }
                 }
@@ -204,60 +266,92 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
         return -1;
     }
 
+    /**
+     * Algorithm which blocks diagonal wins
+     *
+     * @return an int which tells the AI where to play to block a diagonal win
+     */
     public int stopDiagonalWin() {
 
+        //method variables
         int count = 0;
         int missingCol = -1;
         int tempRow = -1;
         int piece = newState.getRED();
 
+        //checks through the board. limits rows and columns checked to avoid array exceptions
+        //checks for top left to bottom right diagonals
         for (int i = 0; i <= board.length - 4; i++) {
             for (int j = 0; j <= board[i].length - 4; j++) {
                 count = 0;
                 missingCol = -1;
+                //for each slot checked, increment four times
                 for (int a = 0; a < 4; a++) {
-                    if (board[i + a][j + a] == piece) {
-                        count++;
-                    } else if (board[i + a][j + a] == newState.getEMPTY()) {
+                    //if the slot checked is the piece, increment the count
+                    if (board[i + a][j + a] == piece) {count++;}
+                    //if the slot checked is empty, set the move to that column
+                    else if (board[i + a][j + a] == newState.getEMPTY()) {
                         missingCol = j + a;
                         tempRow = i + a;
-                    } else {
+                    }
+                    //if the slot checked is the other piece, set the move to -1
+                    else {
                         missingCol = -1;
                         tempRow = -1;
                     }
                 }
+
+                //if there are three pieces and an empty space...
                 if (count == 3 && missingCol != -1) {
+                    //if the move's row is above the bottom row...
                     if (tempRow < board.length - 1) {
+                        //if the move's row can be moved to, return the move
                         if (board[tempRow + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    } else if (tempRow == board.length - 1) {
+                    }
+                    //if the move's row is the bottom row, return the move
+                    else if (tempRow == board.length - 1) {
                         return missingCol;
                     }
                 }
             }
         }
+
+        //checks through the board. limits rows and columns checked to avoid array exceptions
+        //checks for bottom left to top right diagonals
         for (int i = board.length - 1; i >= 3; i--) {
             for (int j = 0; j <= board[i].length - 4; j++) {
                 count = 0;
                 missingCol = -1;
+                //for each slot checked, increment four times
                 for (int a = 0; a < 4; a++) {
+                    //if the slot checked is the piece, increment the count
                     if (board[i - a][j + a] == piece) {
                         count++;
-                    } else if (board[i - a][j + a] == newState.getEMPTY()) {
+                    }
+                    //if the slot checked is empty, set the move to that column
+                    else if (board[i - a][j + a] == newState.getEMPTY()) {
                         missingCol = j + a;
                         tempRow = i - a;
-                    } else {
+                    }
+                    //if the slot checked is the other piece, set the move to -1
+                    else {
                         missingCol = -1;
                         tempRow = -1;
                     }
                 }
+                //if there are three pieces and an empty space...
                 if (count == 3 && missingCol != -1) {
+                    //if the move's row is above the bottom row...
                     if (tempRow < board.length - 1) {
+                        //if the move's row can be moved to, return the move
                         if (board[tempRow + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    } else if (tempRow == board.length - 1) {
+                    }
+                    //if the move's row is the bottom row, return the move
+                    else if (tempRow == board.length - 1) {
                         return missingCol;
                     }
                 }
@@ -266,14 +360,22 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
         return -1;
     }
 
+    /**
+     * Algorithm that checks if the AI can win vertically
+     * @return an integer that tells the AI where to win vertically
+     */
     public int winV() {
+        //method variables
         int count = 0;
         int piece = newState.getBLACK();
         int tempCol;
 
+        //checks the board; limits the rows checked to avoid array exceptions
         for (int i = board.length - 1; i >= 3; i--) {
             for (int j = 0; j < board[i].length; j++) {
                 count = 0;
+                //if the slot checked is a piece, increment through three times
+                //if there are three of the AI's pieces in a row, return that column
                 if (board[i][j] == piece) {
                     tempCol = j;
                     for (int a = 0; a < 3; a++) {
@@ -294,13 +396,20 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
         return -1;
     }
 
+    /**
+     * Algorithm that checks if the AI can win horizontally
+     * @return an int that tells the AI where to win horizontally
+     */
     public int winH() {
 
+        //method variables
         int count = 0;
         int piece = newState.getBLACK();
-
         int missingCol = -1;
 
+        //checks through the board; limits the columns checked to avoid array exceptions
+        //count represents the number of AI pieces there are
+        //missingCol represents the column location of an empty piece
         for (int i = board.length - 1; i >= 0; i--) {
             for (int j = 0; j <= board[i].length - 4; j++) {
                 count = 0;
@@ -315,12 +424,16 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                     }
                 }
 
+                //if there are three AI pieces and an empty space...
                 if (count == 3 && missingCol != -1) {
+                    //if the row checked is above the bottom and can be moved to, return the move
                     if (i < board.length - 1) {
                         if (board[i + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    } else if (i == board.length - 1) {
+                    }
+                    //if the row checked is the bottom row, return the move
+                    else if (i == board.length - 1) {
                         return missingCol;
                     }
                 }
@@ -329,13 +442,23 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
         return -1;
 
     }
+
+    /**
+     * Algorithm that checks if the AI can win diagonally
+     * @return an int which tells the AI where it can move to win diagonally
+     */
     public int winD() {
 
+        //method variables
+        //count represents the number of AI pieces
+        //missingCol represents the column location of the empty space
         int count = 0;
         int missingCol = -1;
         int tempRow = -1;
-            int piece = newState.getBLACK();
+        int piece = newState.getBLACK();
 
+        //checks the board for top left to bottom right diagonal wins
+        //limits the rows and columns checked to avoid array exceptions
         for (int i = 0; i <= board.length - 4; i++) {
             for (int j = 0; j <= board[i].length - 4; j++) {
                 count = 0;
@@ -351,17 +474,24 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                         tempRow = -1;
                     }
                 }
+
+                //if there are three AI pieces and an empty space...
                 if (count == 3 && missingCol != -1) {
+                    //if the row checked is above the bottom and can be moved to, return the move
                     if (tempRow < board.length - 1) {
                         if (board[tempRow + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    } else if (tempRow == board.length - 1) {
+                    }
+                    //if the row checked is the bottom row, return the move
+                    else if (tempRow == board.length - 1) {
                         return missingCol;
                     }
                 }
             }
         }
+
+        //checks the board for bottom right to top left diagonal wins
         for (int i = board.length - 1; i >= 3; i--) {
             for (int j = 0; j <= board[i].length - 4; j++) {
                 count = 0;
@@ -377,12 +507,16 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                         tempRow = -1;
                     }
                 }
+                //if there are three AI pieces and an empty space...
                 if (count == 3 && missingCol != -1) {
+                    //if the row checked is above the bottom and can be moved to, return the move
                     if (tempRow < board.length - 1) {
                         if (board[tempRow + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    } else if (tempRow == board.length - 1) {
+                    }
+                    //if the row checked is the bottom row, return the move
+                    else if (tempRow == board.length - 1) {
                         return missingCol;
                     }
                 }
@@ -390,13 +524,21 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
         }
         return -1;
     }
+
+    /**
+     * Algorithm that checks if the AI can double trap horizontally
+     * @return an integer that tells the AI where to move to double trap horizontally
+     */
     public int win2H() {
 
+        //method variables
+        //count represents the number of AI pieces
+        //missingCol represents the column location of the empty space
         int count = 0;
         int piece = newState.getBLACK();
-
         int missingCol = -1;
 
+        //checks the board; limits the columns checked to avoid array exceptions
         for (int i = board.length - 1; i >= 0; i--) {
             for (int j = 0; j <= board[i].length - 3; j++) {
                 count = 0;
@@ -411,12 +553,16 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
                     }
                 }
 
+                //if there are two AI pieces and an empty space...
                 if (count == 2 && missingCol != -1) {
+                    //if the move's row is above the bottom row and can be moved to, return the move
                     if (i < board.length - 1) {
                         if (board[i + 1][missingCol] != newState.getEMPTY()) {
                             return missingCol;
                         }
-                    } else if (i == board.length - 1) {
+                    }
+                    //if the move's row is the bottom row, return the move
+                    else if (i == board.length - 1) {
                         return missingCol;
                     }
                 }

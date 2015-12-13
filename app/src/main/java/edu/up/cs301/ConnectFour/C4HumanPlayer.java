@@ -16,10 +16,12 @@ import android.view.View.OnClickListener;
 import java.io.Serializable;
 
 /**
+ * Implements the necessary code to make a human player play
  * Created by macnary17 on 11/21/2015.
  */
 public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, Serializable{
 
+    //instance variables
     ConnectFourState newState = new ConnectFourState();
     private int[][] tempBoard = new int[6][7];
 
@@ -80,10 +82,15 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, S
     // the android activity that we are running
     private GameMainActivity myActivity;
 
+    //constructor
     public C4HumanPlayer(String name) {
         super(name);
     }
 
+    /**
+     * Gets the top view layout
+     * @return the view
+     */
     public View getTopView() {
         return myActivity.findViewById(R.id.top_gui_layout);
     }
@@ -97,12 +104,15 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, S
     @Override
     public void receiveInfo(GameInfo info) {
 
+        //if we passed in a state, save that state into our variable called newState
         if (info instanceof ConnectFourState) {
             newState = (ConnectFourState) info;
             //TODO GET the board please... please...
         }
         tempBoard = newState.getBoard();;
 
+        //checks what piece has been played in each space on the board and sets the
+        //appropriate image to display the current state of the board
         if (tempBoard[5][0]==1)
         {
             imageView5.setImageResource(R.mipmap.red);
@@ -669,14 +679,14 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, S
 
 
     /**
-     * this method gets called when the user clicks the '+' or '-' button. It
-     * creates a new CounterMoveAction to return to the parent activity.
-     *
+     * this method gets called when the user clicks on a button and the appropriate
+     * action takes place
      * @param button
      * 		the button that was clicked
      */
     public void onClick(View button) {
 
+        //if they clicked a certain column, send the appropriate action
         if (button == column1Button) {
             C4DropActionCol0 dropActionCol0 = new C4DropActionCol0(this);
             game.sendAction(dropActionCol0);
@@ -705,10 +715,14 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, S
             C4DropActionCol6 dropActionCol6 = new C4DropActionCol6(this);
             game.sendAction(dropActionCol6);
         }
+
+        //if reset was pressed, send a resetAction
         if (button == reset){
             ResetAction resetAction = new ResetAction(this);
             game.sendAction(resetAction);
         }
+
+        //if undo was pressed, send an undoAction
         if (button == undo)
         {
             UndoAction undoAction = new UndoAction(this);
