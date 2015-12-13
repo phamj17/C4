@@ -344,7 +344,7 @@ public abstract class LocalGame implements Game, Tickable {
 	/**
 	 * sends a given action to the Game object  
 	 * 
-	 * @param the
+	 * @param action
 	 *            player requesting the action
 	 */
 	public final void sendAction(GameAction action) {

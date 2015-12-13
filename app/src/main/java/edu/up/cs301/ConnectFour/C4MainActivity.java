@@ -34,7 +34,8 @@ public class C4MainActivity extends GameMainActivity {
         // Define the allowed player types
         ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 
-        // Pig has two player types:  human and computer
+        // C4 has two player types:  human and computer. The computer
+        //player can either be dumb or smart
         playerTypes.add(new GamePlayerType("Local Human Player") {
             public GamePlayer createPlayer(String name) {
                 return new C4HumanPlayer(name);
@@ -65,7 +66,7 @@ public class C4MainActivity extends GameMainActivity {
      * create a local game
      *
      * @return
-     * 		the local game, a counter game
+     * 		the local game
      */
     @Override
     public LocalGame createLocalGame() {

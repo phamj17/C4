@@ -6,9 +6,12 @@ import edu.up.cs301.game.Game;
 import edu.up.cs301.game.infoMsg.GameState;
 
 /**
+ * This class implements the game state for Connect Four
  * Created by phamj17 on 11/5/2015.
  */
 public class ConnectFourState extends GameState {
+
+    //instance variables
     private Piece lastPiecePlayed = null;
     int rowHelper = 0;
     int computerDifficulty;
@@ -34,13 +37,15 @@ public class ConnectFourState extends GameState {
     private boolean hasReset = false;
     private boolean hasUndo = false;
 
-    //number of pieces for each column
+    //number of pieces in each column
     private int[] column = new int[7];
 
-    //7 columns, 6 rows
+    //the game board, contains 7 columns, 6 rows
     private int[][] board = new int[6][7];
 
-    //constructor that initializes board
+    /**
+     * constructor for the game state which initializes the game board
+     */
     public ConnectFourState() {
         //loop through the entire board
         for (int i = 0; i < board.length; i++) {
@@ -55,7 +60,10 @@ public class ConnectFourState extends GameState {
         gameOver = false;
     }
 
-    //copy constructor
+    /**
+     * copy constructor for the game state
+     * @param state the state to be copied
+     */
     public ConnectFourState(ConnectFourState state) {
         board = state.getBoard();
         gameOver = state.getGameOver();
@@ -63,7 +71,12 @@ public class ConnectFourState extends GameState {
         column = state.getColumn();
     }
 
-    //get a piece...
+    /**
+     * gets the piece value at the specified slot
+     * @param row the row to be checked
+     * @param col the column to be checked
+     * @return the piece value at the specified slot
+     */
     public int getPiece(int row, int col) {
         //check if row or col is a neg number
         if (board == null || row < 0 || col < 0) return -1;
@@ -72,7 +85,11 @@ public class ConnectFourState extends GameState {
         return board[row][col];
     }
 
-    //set a piece...
+    /**
+     * sets a piece at the specified column, if possible
+     * @param col the column in which the piece will be set, if possible
+     * @return returns true if the setting was successful, and false otherwise
+     */
     public boolean setPiece(int col) {
         //temp variables
         if (hasUndo)
@@ -123,7 +140,10 @@ public class ConnectFourState extends GameState {
         }
     }
 
-    //check for a horizontal win...
+    /**
+     * checks the board for a horizontal four-in-a-row
+     * @return true if there is a horizontal win, and false otherwise
+     */
     public boolean horizontalWin() {
 
         int count = 0;
@@ -152,15 +172,15 @@ public class ConnectFourState extends GameState {
                         }
                     }
                 }
-//                else {
-//                    count = 0;
-//                }
             }
         }
         return false;
     }
 
-    //check for a vertical win...
+    /**
+     * checks the board for a vertical four-in-a-row
+     * @return true if there is a vertical win, and false otherwise
+     */
     public boolean verticalWin() {
 
         int count = 0;
@@ -190,15 +210,15 @@ public class ConnectFourState extends GameState {
                         }
                     }
                 }
-//                else {
-//                    count = 0;
-//                }
             }
         }
         return false;
     }
 
-    //check for diagonal win
+    /**
+     * checks the board for a diagonal four-in-a-row
+     * @return true if there is a diagonal win, and false otherwise
+     */
     public boolean diagonalWin() {
         boolean keepGoing = false;
         int count = 0;
@@ -209,8 +229,7 @@ public class ConnectFourState extends GameState {
             piece = BLACK;
         }
 
-
-        //look through entire game board, starting in top left corner
+        //checks the board for a top left to bottom right diagonal wins
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j] == piece) {
@@ -237,6 +256,8 @@ public class ConnectFourState extends GameState {
                 count = 0;
             }
         }
+
+        //checks the board for bottom left to top right diagonal wins
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j] == piece) {
@@ -267,7 +288,10 @@ public class ConnectFourState extends GameState {
     }
 
 
-    //checks if the game is over...
+    /**
+     * checks is the game is over and changes the turn if it's not
+     * @return true if the game is over, and false otherwise
+     */
     public boolean gameOver() {
         if (verticalWin() || horizontalWin() || diagonalWin()) {
             return true;
@@ -319,43 +343,30 @@ public class ConnectFourState extends GameState {
         return column;
     }
 
+    //move actions for players
     public void dropActionCol0() { setPiece(0); }
 
-    public void dropActionCol1()
-    {
-        setPiece(1);
-    }
+    public void dropActionCol1() {setPiece(1);}
 
-    public void dropActionCol2()
-    {
-        setPiece(2);
-    }
+    public void dropActionCol2() {setPiece(2);}
 
-    public void dropActionCol3()
-    {
-        setPiece(3);
-    }
+    public void dropActionCol3() {setPiece(3);}
 
-    public void dropActionCol4()
-    {
-        setPiece(4);
-    }
+    public void dropActionCol4() {setPiece(4);}
 
-    public void dropActionCol5()
-    {
-        setPiece(5);
-    }
+    public void dropActionCol5() {setPiece(5);}
 
-    public void dropActionCol6()
-    {
-        setPiece(6);
-    }
+    public void dropActionCol6() {setPiece(6);}
 
+    /**
+     * reset action for players
+     */
     public void resetAction()
     {
         int[][] tempBoard = getBoard();
         int[] tempCol = getColumn();
 
+        //sets all slots to empty
         for (int i = 0; i < tempBoard.length; i++) {
             for (int j = 0; j < tempBoard[i].length; j++) {
                 tempCol[j] = 0;
@@ -373,6 +384,9 @@ public class ConnectFourState extends GameState {
 
     }
 
+    /**
+     * undo action for players
+     */
     public void undoAction()
     {
         if (!hasUndo) {
@@ -385,15 +399,6 @@ public class ConnectFourState extends GameState {
 
             tempBoard[rowHelper1stTurn][columnHelper1stTurn] = EMPTY;
             tempCol[columnHelper1stTurn] = tempCol[columnHelper1stTurn] - 1;
-
-//        if(turn == 1){
-//            System.out.println("TURN WAS 1, NOW IT IS 0");
-//            turn = 0;
-//        }
-//        else if(turn == 0){
-//            System.out.println("TURN WAS 0, NOW it IS 1");
-//            turn = 1;
-//        }
 
             turn = 0;
             hasReset = true;
@@ -409,11 +414,16 @@ public class ConnectFourState extends GameState {
 
     }
 
+    /**
+     * sets the computer difficulty
+     * @param difficulty an int that designates the desired difficulty
+     */
     public void setComputerDifficulty(int difficulty)
     {
         computerDifficulty = difficulty;
     }
 
+    //get methods that return piece types
     public int getEMPTY(){return EMPTY;}
 
     public int getRED(){return RED;}
