@@ -1,24 +1,23 @@
 package edu.up.cs301.ConnectFour;
 
-import edu.up.cs301.game.GameHumanPlayer;
-import edu.up.cs301.game.GameMainActivity;
-import edu.up.cs301.game.R;
-import edu.up.cs301.game.infoMsg.GameInfo;
-
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.view.View.OnClickListener;
 
-import java.io.Serializable;
+import edu.up.cs301.game.Game;
+import edu.up.cs301.game.GameHumanPlayer;
+import edu.up.cs301.game.GameMainActivity;
+import edu.up.cs301.game.R;
+import edu.up.cs301.game.actionMsg.GameAction;
+import edu.up.cs301.game.infoMsg.BindGameInfo;
+import edu.up.cs301.game.infoMsg.GameInfo;
+import edu.up.cs301.game.util.NetworkObjectPasser;
 
 /**
- * Created by macnary17 on 11/21/2015.
+ * Created by althouse17 on 12/12/2015.
  */
-public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, Serializable{
+public class C4NetworkPlayer extends GameHumanPlayer implements View.OnClickListener {
 
     ConnectFourState newState = new ConnectFourState();
     private int[][] tempBoard = new int[6][7];
@@ -28,7 +27,7 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, S
 
 
     // These variables will reference widgets that will be modified during play
-    private ImageButton    column1Button = null;
+    private ImageButton column1Button = null;
     private ImageButton    column2Button = null;
     private ImageButton    column3Button = null;
     private ImageButton    column4Button = null;
@@ -78,11 +77,13 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, S
     private ImageView imageView40;
     private ImageView imageView41;
     // the android activity that we are running
+
     private GameMainActivity myActivity;
 
-    public C4HumanPlayer(String name) {
+    public C4NetworkPlayer(String name) {
         super(name);
     }
+
 
     public View getTopView() {
         return myActivity.findViewById(R.id.top_gui_layout);
@@ -101,7 +102,7 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, S
             newState = (ConnectFourState) info;
             //TODO GET the board please... please...
         }
-        tempBoard = newState.getBoard();;
+        tempBoard = newState.getBoard();
 
         if (tempBoard[5][0]==1)
         {
@@ -734,8 +735,6 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, S
         activity.setContentView(R.layout.connectfourboard);
 
         this.reset = (Button) activity.findViewById(R.id.reset);
-
-        //if(getSchmidty)
         this.undo = (Button) activity.findViewById(R.id.undo);
 
         //Initialize the widget reference member variables

@@ -2,6 +2,8 @@ package edu.up.cs301.ConnectFour;
 
 import android.graphics.Canvas;
 
+import java.util.concurrent.TimeUnit;
+
 import edu.up.cs301.game.Game;
 import edu.up.cs301.game.infoMsg.GameState;
 
@@ -375,6 +377,7 @@ public class ConnectFourState extends GameState {
 
     public void undoAction()
     {
+
         if (!hasUndo) {
             int[][] tempBoard = getBoard();
             int[] tempCol = getColumn();
@@ -405,6 +408,11 @@ public class ConnectFourState extends GameState {
         else
         {
             hasReset = true;
+        }
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(15);
+        } catch (InterruptedException e) {
         }
 
     }

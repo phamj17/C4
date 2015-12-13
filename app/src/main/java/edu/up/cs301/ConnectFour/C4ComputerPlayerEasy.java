@@ -13,6 +13,8 @@ import edu.up.cs301.game.util.Tickable;
  */
 public class C4ComputerPlayerEasy extends GameComputerPlayer {
 
+    public int schmidty = 0;
+
     ConnectFourState newState = new ConnectFourState();
     //set up 2D array to hold board values
     public int[][] board = new int[6][7];
@@ -248,4 +250,9 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
         }
         return -1;
     }
+
+    public int getSchmidty() {
+        return schmidty;
+    }
+
 }

@@ -10,6 +10,7 @@ import edu.up.cs301.animation.Animation;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
+import edu.up.cs301.game.ProxyPlayer;
 import edu.up.cs301.game.config.GameConfig;
 import edu.up.cs301.game.config.GamePlayerType;
 
@@ -39,6 +40,13 @@ public class C4MainActivity extends GameMainActivity {
             public GamePlayer createPlayer(String name) {
                 return new C4HumanPlayer(name);
             }});
+//        playerTypes.add(new GamePlayerType("Network Player's Player") {
+//            public GamePlayer createPlayer(String name) {
+//                //int portNum = getPortNum();
+//                return new C4NetworkPlayer(String name);
+//               // return new C4NetworkPlayer(name);
+//            }});
+
         playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
             public GamePlayer createPlayer(String name) {
                 return new C4ComputerPlayerEasy(name);

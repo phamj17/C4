@@ -449,7 +449,8 @@
                 android:layout_height="fill_parent"
                 android:text="Undo"
                 android:id="@+id/undo"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onClick"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

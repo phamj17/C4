@@ -9,11 +9,25 @@
         <dex dex="P:\cs 301\C4\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-cd0bc13b74136e31c952ef8da9278e72a7f13ec8.jar" />
     </item>
     <item
+        jar="C:\Users\althouse17\Desktop\C4\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="C:\Users\althouse17\Desktop\C4\app\build\intermediates\pre-dexed\debug\classes-fbb47579d48398de79f4aafbf5b9856d6601d5a9.jar" />
+    </item>
+    <item
         jar="P:\cs 301\C4\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="686344a780033e4ba22b926cd225f8d4941247e6">
         <dex dex="P:\cs 301\C4\app\build\intermediates\pre-dexed\debug\classes-1945762f504abe81d6ea5b3e91f22224cef93807.jar" />
+    </item>
+    <item
+        jar="C:\Users\althouse17\Desktop\C4\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
+        <dex dex="C:\Users\althouse17\Desktop\C4\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-d86df3584c622aac4b8b377f81f4d09d220dbc4e.jar" />
     </item>
     <item
         jar="P:\cs 301\C4\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"

@@ -317,6 +317,8 @@ View.OnClickListener {
 			return "Cannot have more than one GUI player on a single device.";
 		}
 
+
+
 		// if there is a player that supports a GUI, link it to the activity,
 		// otherwise set the GUI to be a "dummy" one with a "no GUI" message
 		if (guiPlayer != null) {
@@ -544,7 +546,7 @@ View.OnClickListener {
 	 */
 	private void removePlayer(TableRow row) {
 		// first, make sure that we won't exceed the min number of players
-		if (this.tableRows.size() <= config.getMinPlayers()) {
+		if (this.tableRows.size() <= 2) {
 			MessageBox.popUpMessage("Sorry, removing a player would drop below the minimum allowed.",
 					this);
 			return;

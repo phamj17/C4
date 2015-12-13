@@ -10,6 +10,8 @@ import edu.up.cs301.game.infoMsg.GameInfo;
  */
 public class C4ComputerPlayerHard extends GameComputerPlayer {
 
+    public int schmidty = 1;
+
     ConnectFourState newState = new ConnectFourState();
     //set up 2D array to hold board values
     public int[][] board = new int[6][7];
@@ -70,5 +72,7 @@ public class C4ComputerPlayerHard extends GameComputerPlayer {
         //random movements
     }
 
-
+    public int getSchmidty() {
+        return schmidty;
+    }
 }
