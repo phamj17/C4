@@ -18,6 +18,7 @@ public class ConnectFourState extends GameState {
     int rowHelper = 0;
     int computerDifficulty;
     int columnHelper = 0;
+    int draw = 0;
 
     int rowHelper1stTurn= 0;
     int columnHelper1stTurn = 0;
@@ -295,7 +296,19 @@ public class ConnectFourState extends GameState {
      * @return true if the game is over, and false otherwise
      */
     public boolean gameOver() {
-        if (verticalWin() || horizontalWin() || diagonalWin()) {
+        int fullCols = 0;
+        for (int a = 0; a < column.length; a++)
+        {
+            if (column[a] == 6)
+            {
+                fullCols++;
+            }
+        }
+        if (verticalWin() || horizontalWin() || diagonalWin() || fullCols == 7) {
+            if (fullCols == 7)
+            {
+                draw = 1;
+            }
             return true;
         }
         else {
@@ -437,4 +450,6 @@ public class ConnectFourState extends GameState {
     public int getRED(){return RED;}
 
     public int getBLACK(){return BLACK;}
+
+    public int getDraw() {return draw;}
 }

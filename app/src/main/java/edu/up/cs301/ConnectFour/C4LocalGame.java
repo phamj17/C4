@@ -9,6 +9,7 @@ import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.util.Log;
 
@@ -22,6 +23,7 @@ public class C4LocalGame extends LocalGame {
 
     //instance variable
     public ConnectFourState state;
+    Context stuff;
 
     /**
      * This constructor creates a new game state
@@ -29,7 +31,10 @@ public class C4LocalGame extends LocalGame {
     public C4LocalGame() {
         state = new ConnectFourState();
     }
-
+    public void getContext(Context context)
+    {
+        stuff = context;
+    }
     /**
      * can the player with the given id take an action right now?
      * @param playerIdx
@@ -124,13 +129,17 @@ public class C4LocalGame extends LocalGame {
         String victory = null;
         //if the game is over, check who won
         if (state.gameOver()) {
+            if (state.getDraw() == 1)
+            {
+                victory = "TIE GAME";
+            }
             //if it's player 2's turn, set the string to say yellow won
-            if(state.getTurn() == 1)
+            else if(state.getTurn() == 1)
             {
                 victory = "YELLOW WON";
             }
             //if it's player 1's turn, set the string to say yellow won
-            if(state.getTurn() == 0)
+            else if(state.getTurn() == 0)
             {
                 victory = "RED WON";
             }

@@ -7,7 +7,7 @@ import edu.up.cs301.game.GameComputerPlayer;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
 /**
- * This class implements the hard AI for C4
+ * This class implements the medium AI for C4
  * Created by macnary17 on 12/1/2015.
  */
 public class C4ComputerPlayerMedium extends GameComputerPlayer {

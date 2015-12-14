@@ -4,6 +4,8 @@ package edu.up.cs301.ConnectFour;
  * Created by macnary17 on 11/30/2015.
  */
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import edu.up.cs301.animation.Animation;
@@ -21,6 +23,7 @@ public class C4MainActivity extends GameMainActivity {
     private static final int PORT_NUMBER = 2278;
 
     private Animation animation;
+    Context thisContext;
     /**
      * Create the default configuration for this game:
      * - one human player vs. one computer player
@@ -48,18 +51,18 @@ public class C4MainActivity extends GameMainActivity {
 //               // return new C4NetworkPlayer(name);
 //            }});
 
-        playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
+        playerTypes.add(new GamePlayerType("Computer Player (easy)") {
             public GamePlayer createPlayer(String name) {
                 return new C4ComputerPlayerEasy(name);
             }});
-        playerTypes.add(new GamePlayerType("Computer Player (smart)") {
+        playerTypes.add(new GamePlayerType("Computer Player (medium)") {
             public GamePlayer createPlayer(String name) {
                 return new C4ComputerPlayerMedium(name);
             }});
-        /*playerTypes.add(new GamePlayerType("Computer Player (hard)") {
+        playerTypes.add(new GamePlayerType("Computer Player (hard)") {
             public GamePlayer createPlayer(String name) {
                 return new C4ComputerPlayerHard(name);
-            }});*/
+            }});
 
         // Create a game configuration class for Counter:
         GameConfig defaultConfig = new GameConfig(playerTypes, 1, 2, "Connect Four", PORT_NUMBER);
@@ -78,7 +81,9 @@ public class C4MainActivity extends GameMainActivity {
      */
     @Override
     public LocalGame createLocalGame() {
-        return new C4LocalGame();
+        C4LocalGame meh = new C4LocalGame();
+        meh.getContext(thisContext);
+        return meh;
     }
 
 }
