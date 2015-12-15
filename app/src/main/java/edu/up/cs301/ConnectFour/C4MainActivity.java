@@ -15,6 +15,7 @@ import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.ProxyPlayer;
+import edu.up.cs301.game.R;
 import edu.up.cs301.game.config.GameConfig;
 import edu.up.cs301.game.config.GamePlayerType;
 
@@ -51,16 +52,25 @@ public class C4MainActivity extends GameMainActivity {
 //        playerTypes.add(new GamePlayerType("Network Player's Player") {
 //            public GamePlayer createPlayer(String name) {
 //                //int portNum = getPortNum();
-//                return new C4NetworkPlayer(String name);
-//               // return new C4NetworkPlayer(name);
+//                //return new C4NetworkPlayer(String name);
+//                return new C4NetworkPlayer(name);
 //            }});
+
+        //GamePlayerType easy = new GamePlayerType("Computer Player (easy)");
 
         playerTypes.add(new GamePlayerType("Computer Player (easy)") {
             public GamePlayer createPlayer(String name) {
-                return new C4ComputerPlayerEasy(name);
+                C4ComputerPlayerEasy easy = new C4ComputerPlayerEasy(name);
+                //easy.setActivity(C4MainActivity.this);
+                MediaPlayer player = MediaPlayer.create(C4MainActivity.this, R.raw.piece_set);
+                player.setLooping(false);
+                easy.setPlayer(player);
+                return easy;
             }});
         playerTypes.add(new GamePlayerType("Computer Player (medium)") {
             public GamePlayer createPlayer(String name) {
+                //C4ComputerPlayerMedium medium = new C4ComputerPlayerEasy("Computer Player (medium)");
+                //medium.setActivity(C4MainActivity.this);
                 return new C4ComputerPlayerMedium(name);
             }});
         playerTypes.add(new GamePlayerType("Computer Player (hard)") {

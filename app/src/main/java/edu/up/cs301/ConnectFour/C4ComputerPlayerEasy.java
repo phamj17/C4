@@ -1,6 +1,7 @@
 package edu.up.cs301.ConnectFour;
 
 import android.media.MediaPlayer;
+import android.provider.MediaStore;
 import android.view.View;
 
 import java.util.Random;
@@ -19,15 +20,17 @@ import edu.up.cs301.game.util.Tickable;
  */
 public class C4ComputerPlayerEasy extends GameComputerPlayer {
 
+
     public int schmidty = 0;
 
     //instance variables
     ConnectFourState newState = new ConnectFourState();
     //set up 2D array to hold board values
     public int[][] board = new int[6][7];
-
+    public int[][] tempBoard = new int[6][7];
+    int[] col;
     MediaPlayer player;
-    private GameMainActivity myActivity;
+    //private GameMainActivity myActivity;
 
     /**
      * constructor for the C4ComputerPlayerEasy
@@ -38,7 +41,6 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
         super(name);
     }
 
-
     /**
      * Receives info
      * @param info - variable that holds the game info
@@ -47,7 +49,9 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
         //Check if opponent can get 4 in a row
         if (info instanceof ConnectFourState) {
             newState = (ConnectFourState) info;
+            col = newState.getColumn();
             board = newState.getBoard();
+            tempBoard = newState.getBoard();
             int playerIdx = newState.getTurn();
         }
 
@@ -75,7 +79,6 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
         else if (stop2Horizontal() != -1) {
             stopHuman = stop2Horizontal();
         }
-
         //If opponent can get 4 in a row, block
         if (stopHuman != -1) {
             move = stopHuman;
@@ -85,7 +88,13 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
             move = rand.nextInt(7);
         }
 
+
+
         if (move == 0) {
+            if (col[move] < 6)
+            {
+                playerStart();
+            }
             C4DropActionCol0 dropActionCol0 = new C4DropActionCol0(this);
             game.sendAction(dropActionCol0);
         } else if (move == 1) {
@@ -107,6 +116,15 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
             C4DropActionCol6 dropActionCol6 = new C4DropActionCol6(this);
             game.sendAction(dropActionCol6);
         }
+        if (tempBoard != board) {
+            playerStart();
+        }
+    }
+
+    public void playerStart() {
+        player.start();
+        player.setLooping(false);
+
     }
 
     /**
@@ -348,6 +366,10 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
 
     public int getSchmidty() {
         return schmidty;
+    }
+
+    public void setPlayer(MediaPlayer newPlayer) {
+        player = newPlayer;
     }
 
 }

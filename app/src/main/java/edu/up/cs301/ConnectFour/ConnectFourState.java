@@ -1,6 +1,7 @@
 package edu.up.cs301.ConnectFour;
 
 import android.graphics.Canvas;
+import android.media.MediaPlayer;
 
 import java.util.concurrent.TimeUnit;
 
@@ -45,6 +46,8 @@ public class ConnectFourState extends GameState {
 
     //the game board, contains 7 columns, 6 rows
     private int[][] board = new int[6][7];
+
+    MediaPlayer player;
 
     /**
      * constructor for the game state which initializes the game board

@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 
+import edu.up.cs301.ConnectFour.C4ComputerPlayerEasy;
 import edu.up.cs301.ConnectFour.C4LocalGame;
 import edu.up.cs301.game.config.GameConfig;
 import edu.up.cs301.game.config.GamePlayerType;
@@ -75,6 +76,7 @@ View.OnClickListener {
 	private boolean doingConfiguration = true;
 
 	private MediaPlayer player;
+
 
 	/**
 	 * contains the game configuration this activity will be used to initialize
@@ -180,6 +182,7 @@ View.OnClickListener {
 
 		player=MediaPlayer.create(GameMainActivity.this,R.raw.king_o_desert);
 		player.start();
+		player.setLooping(true);
 
 	}// onCreate
 
