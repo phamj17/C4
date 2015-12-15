@@ -6,6 +6,7 @@ import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -81,6 +82,7 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, S
     private ImageView imageView41;
     // the android activity that we are running
     private GameMainActivity myActivity;
+    private MediaPlayer player;
 
     //constructor
     public C4HumanPlayer(String name) {
@@ -690,30 +692,38 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, S
         if (button == column1Button) {
             C4DropActionCol0 dropActionCol0 = new C4DropActionCol0(this);
             game.sendAction(dropActionCol0);
+            player.start();
+
         }
         if (button == column2Button) {
             C4DropActionCol1 dropActionCol1 = new C4DropActionCol1(this);
             game.sendAction(dropActionCol1);
+            player.start();
         }
         if (button == column3Button) {
             C4DropActionCol2 dropActionCol2 = new C4DropActionCol2(this);
             game.sendAction(dropActionCol2);
+            player.start();
         }
         if (button == column4Button) {
             C4DropActionCol3 dropActionCol3 = new C4DropActionCol3(this);
             game.sendAction(dropActionCol3);
+            player.start();
         }
         if (button == column5Button) {
             C4DropActionCol4 dropActionCol4 = new C4DropActionCol4(this);
             game.sendAction(dropActionCol4);
+            player.start();
         }
         if (button == column6Button) {
             C4DropActionCol5 dropActionCol5 = new C4DropActionCol5(this);
             game.sendAction(dropActionCol5);
+            player.start();
         }
         if (button == column7Button) {
             C4DropActionCol6 dropActionCol6 = new C4DropActionCol6(this);
             game.sendAction(dropActionCol6);
+            player.start();
         }
 
         //if reset was pressed, send a resetAction
@@ -751,6 +761,9 @@ public class C4HumanPlayer extends GameHumanPlayer implements OnClickListener, S
 
         //if(getSchmidty)
         this.undo = (Button) activity.findViewById(R.id.undo);
+
+        //media player
+        player = MediaPlayer.create(myActivity,R.raw.piece_set);
 
         //Initialize the widget reference member variables
         this.column1Button = (ImageButton)activity.findViewById(R.id.Col1);

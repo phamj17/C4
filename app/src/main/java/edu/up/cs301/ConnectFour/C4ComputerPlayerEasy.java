@@ -1,9 +1,14 @@
 package edu.up.cs301.ConnectFour;
 
+import android.media.MediaPlayer;
+import android.view.View;
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import edu.up.cs301.game.GameComputerPlayer;
+import edu.up.cs301.game.GameMainActivity;
+import edu.up.cs301.game.R;
 import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.util.Tickable;
@@ -21,6 +26,9 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
     //set up 2D array to hold board values
     public int[][] board = new int[6][7];
 
+    MediaPlayer player;
+    private GameMainActivity myActivity;
+
     /**
      * constructor for the C4ComputerPlayerEasy
      *
@@ -29,6 +37,7 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
     public C4ComputerPlayerEasy(String name) {
         super(name);
     }
+
 
     /**
      * Receives info

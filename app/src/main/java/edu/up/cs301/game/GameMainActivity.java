@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Configuration;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -72,6 +73,8 @@ View.OnClickListener {
 	// whether the game is in the "configuration" stage, before the actual game
 	// has started
 	private boolean doingConfiguration = true;
+
+	private MediaPlayer player;
 
 	/**
 	 * contains the game configuration this activity will be used to initialize
@@ -174,6 +177,9 @@ View.OnClickListener {
 				MessageBox.popUpMessage(msg, this);
 			}
 		}
+
+		player=MediaPlayer.create(GameMainActivity.this,R.raw.king_o_desert);
+		player.start();
 
 	}// onCreate
 
@@ -805,6 +811,7 @@ View.OnClickListener {
 	 * 		the object that cause the callback
 	 */
 	public void doFinish(View v) {
+		player.stop();
 		finish();
 	}
 

@@ -5,6 +5,8 @@ package edu.up.cs301.ConnectFour;
  */
 
 import android.content.Context;
+import android.media.MediaPlayer;
+import android.os.Bundle;
 
 import java.util.ArrayList;
 
@@ -24,6 +26,8 @@ public class C4MainActivity extends GameMainActivity {
 
     private Animation animation;
     Context thisContext;
+
+
     /**
      * Create the default configuration for this game:
      * - one human player vs. one computer player
