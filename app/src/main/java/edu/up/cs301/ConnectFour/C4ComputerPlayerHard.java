@@ -12,6 +12,8 @@ import edu.up.cs301.game.infoMsg.GameInfo;
  */
 public class C4ComputerPlayerHard extends GameComputerPlayer {
 
+    int counterz = 0;
+    int[] col;
     public int schmidty = 1;
 
     //instance variables
@@ -37,7 +39,6 @@ public class C4ComputerPlayerHard extends GameComputerPlayer {
         if (info instanceof ConnectFourState) {
             newState = (ConnectFourState) info;
             board = newState.getBoard();
-            int playerIdx = newState.getTurn();
         }
 
         try {
@@ -51,7 +52,7 @@ public class C4ComputerPlayerHard extends GameComputerPlayer {
         int winner = -1;
         int winner2H = -1;
         Random rand = new Random();
-        int[] col = newState.getColumn();
+        col = newState.getColumn();
         int midCol = col[3];
 
         if (winV() != -1) {
@@ -93,84 +94,55 @@ public class C4ComputerPlayerHard extends GameComputerPlayer {
         //else, move randomly
         else {
             move = rand.nextInt(7);
+            if (col[move] >= 6) {
+                int temp = move;
+                while (move == temp) {
+                    move = rand.nextInt(7);
+                }
+            }
         }
-        int counterz = 0;
-        while(dontGo(move) || counterz == 10)
-        {
-            counterz++;
-            move = rand.nextInt(7);
+
+        boolean validMove = true;
+
+        while(dontGo(move) && validMove) {
+            if (col[move] > 5) {
+                move = rand.nextInt(7);
+            }
+            else {
+                counterz++;
+                move = rand.nextInt(7);
+                if(counterz > 30){
+                    validMove = false;
+                    counterz = 0;
+                }
+            }
         }
+
         //move actions for the computer player
         if (winner != -1) {
             move = winner;
         }
-
         if (move == 0) {
-//            if (!dontGo(0)) {
                 C4DropActionCol0 dropActionCol0 = new C4DropActionCol0(this);
                 game.sendAction(dropActionCol0);
-//            } else {
-//                C4DropActionCol1 dropActionCol1 = new C4DropActionCol1(this);
-//                game.sendAction(dropActionCol1);
-//            }
         } else if (move == 1) {
-//            if (!dontGo(1)) {
                 C4DropActionCol1 dropActionCol1 = new C4DropActionCol1(this);
                 game.sendAction(dropActionCol1);
-//            }
-//            else {
-//                C4DropActionCol2 dropActionCol2 = new C4DropActionCol2(this);
-//                game.sendAction(dropActionCol2);
-//            }
         } else if (move == 2) {
-//            if (!dontGo(2)) {
                 C4DropActionCol2 dropActionCol2 = new C4DropActionCol2(this);
                 game.sendAction(dropActionCol2);
-//            }
-//            else
-//            {
-//                C4DropActionCol3 dropActionCol3 = new C4DropActionCol3(this);
-//                game.sendAction(dropActionCol3);
-//            }
         } else if (move == 3) {
-//            if (!dontGo(3)) {
                 C4DropActionCol3 dropActionCol3 = new C4DropActionCol3(this);
                 game.sendAction(dropActionCol3);
-//            }
-//            else
-//            {
-//                C4DropActionCol4 dropActionCol4 = new C4DropActionCol4(this);
-//                game.sendAction(dropActionCol4);
-//            }
         } else if (move == 4) {
-//            if (!dontGo(4)) {
                 C4DropActionCol4 dropActionCol4 = new C4DropActionCol4(this);
                 game.sendAction(dropActionCol4);
-//            }
-//            else {
-//                C4DropActionCol5 dropActionCol5 = new C4DropActionCol5(this);
-//                game.sendAction(dropActionCol5);
-//            }
         } else if (move == 5) {
-//            if (!dontGo(5)) {
                 C4DropActionCol5 dropActionCol5 = new C4DropActionCol5(this);
                 game.sendAction(dropActionCol5);
-//            }
-//            else
-//            {
-//                C4DropActionCol6 dropActionCol6 = new C4DropActionCol6(this);
-//                game.sendAction(dropActionCol6);
-//            }
         } else if (move == 6) {
-//            if (!dontGo(6)) {
                 C4DropActionCol6 dropActionCol6 = new C4DropActionCol6(this);
                 game.sendAction(dropActionCol6);
-//            }
-//            else
-//            {
-//                C4DropActionCol0 dropActionCol0 = new C4DropActionCol0(this);
-//                game.sendAction(dropActionCol0);
-//            }
         }
     }
 
@@ -766,13 +738,10 @@ public class C4ComputerPlayerHard extends GameComputerPlayer {
                 }
             }
         }
-
+        if(col[inThisCol] > 5)
+        {
+            return true;
+        }
         return false;
-
-    }
-
-
-    public int getSchmidty() {
-        return schmidty;
     }
 }

@@ -93,6 +93,12 @@ public class C4ComputerPlayerMedium extends GameComputerPlayer {
         //else, move randomly
         else {
             move = rand.nextInt(7);
+            if (col[move] >= 6) {
+                int temp = move;
+                while (move == temp) {
+                    move = rand.nextInt(7);
+                }
+            }
         }
 
         //move actions for the computer player

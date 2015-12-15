@@ -27,9 +27,8 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
     ConnectFourState newState = new ConnectFourState();
     //set up 2D array to hold board values
     public int[][] board = new int[6][7];
-    public int[][] tempBoard = new int[6][7];
-    int[] col;
     MediaPlayer player;
+    public int[] col;
     //private GameMainActivity myActivity;
 
     /**
@@ -51,7 +50,6 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
             newState = (ConnectFourState) info;
             col = newState.getColumn();
             board = newState.getBoard();
-            tempBoard = newState.getBoard();
             int playerIdx = newState.getTurn();
         }
 
@@ -86,15 +84,17 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
         //If opponent cant get 4 in a row, move randomly
         else {
             move = rand.nextInt(7);
+            if (col[move] >= 6) {
+                int temp = move;
+                while (move == temp) {
+                    move = rand.nextInt(7);
+                }
+            }
         }
 
 
 
         if (move == 0) {
-            if (col[move] < 6)
-            {
-                playerStart();
-            }
             C4DropActionCol0 dropActionCol0 = new C4DropActionCol0(this);
             game.sendAction(dropActionCol0);
         } else if (move == 1) {
@@ -116,15 +116,6 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
             C4DropActionCol6 dropActionCol6 = new C4DropActionCol6(this);
             game.sendAction(dropActionCol6);
         }
-        if (tempBoard != board) {
-            playerStart();
-        }
-    }
-
-    public void playerStart() {
-        player.start();
-        player.setLooping(false);
-
     }
 
     /**
@@ -364,10 +355,10 @@ public class C4ComputerPlayerEasy extends GameComputerPlayer {
         return -1;
     }
 
-    public int getSchmidty() {
-        return schmidty;
-    }
-
+    /**
+     * sets the media player from an activity
+     * @param newPlayer
+     */
     public void setPlayer(MediaPlayer newPlayer) {
         player = newPlayer;
     }

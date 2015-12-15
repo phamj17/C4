@@ -26,6 +26,12 @@ public class ConnectFourState extends GameState {
     //helper
     int countCinco = 0;
 
+    //checks if noise should be made:
+    //0 is false
+    //1 is true and needs to make noise
+    //2 is true and doesn't need to make noise
+    int makeNoise = 1;
+
     private final int EMPTY = 0;
     //player 1 piece
     private final int RED = 1;
@@ -109,12 +115,16 @@ public class ConnectFourState extends GameState {
         //check if board exists, if piece is out of bounds
         if (tempBoard == null || col < 0 || col > 6) {
             countCinco = 1;
+            //System.out.println("makeNoise = " + makeNoise);
+            //makeNoise = 0;
             return false;
         }
 
         //the column is already full, so return false
         if (tempCol[col] >= 6) {
             countCinco = 1;
+            //System.out.println("makeNoise = " + makeNoise);
+           // makeNoise = 0;
             return false;
         }
         //else, do this stuff
@@ -142,6 +152,8 @@ public class ConnectFourState extends GameState {
             board = tempBoard;
             column = tempCol;
 
+            makeNoise = 1;
+            System.out.println("makeNoise = " + makeNoise);
             return true;
         }
     }
@@ -392,7 +404,7 @@ public class ConnectFourState extends GameState {
             }
         }
         hasReset = true;
-
+        hasUndo = true;
         column = tempCol;
         board = tempBoard;
         if (gameOver = true)
@@ -455,4 +467,11 @@ public class ConnectFourState extends GameState {
     public int getBLACK(){return BLACK;}
 
     public int getDraw() {return draw;}
+
+    public void setMakeNoise(int newSet) {
+        makeNoise = newSet;
+    }
+    public int getMakeNoise() {
+        return makeNoise;
+    }
 }
